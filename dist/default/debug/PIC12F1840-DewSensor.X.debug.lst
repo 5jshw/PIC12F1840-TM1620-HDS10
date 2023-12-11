@@ -1,0 +1,2255 @@
+
+
+Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
+                                                                                               Mon Dec 11 17:12:41 2023
+
+Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
+     1                           	processor	12F1840
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	stringtext1,global,class=STRCODE,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,merge=1,delta=2
+    14                           	psect	text5,local,class=CODE,merge=1,delta=2
+    15                           	psect	text6,local,class=CODE,merge=1,delta=2
+    16                           	psect	text7,local,class=CODE,merge=1,delta=2
+    17                           	psect	text8,local,class=CODE,merge=1,delta=2
+    18                           	psect	text9,local,class=CODE,merge=1,delta=2,group=1
+    19                           	psect	text10,local,class=CODE,merge=1,delta=2,group=1
+    20                           	psect	intentry,global,class=CODE,delta=2
+    21                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    22                           	dabs	1,0x7E,2
+    23     0000                     
+    24                           ; Generated 07/09/2023 GMT
+    25                           ; 
+    26                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    27                           ; All rights reserved.
+    28                           ; 
+    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    30                           ; 
+    31                           ; Redistribution and use in source and binary forms, with or without modification, are
+    32                           ; permitted provided that the following conditions are met:
+    33                           ; 
+    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    35                           ;        conditions and the following disclaimer.
+    36                           ; 
+    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    38                           ;        of conditions and the following disclaimer in the documentation and/or other
+    39                           ;        materials provided with the distribution. Publication is not required when
+    40                           ;        this file is used in an embedded application.
+    41                           ; 
+    42                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    43                           ;        software without specific prior written permission.
+    44                           ; 
+    45                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    46                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    47                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    48                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    49                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    50                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    51                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    52                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    53                           ; 
+    54                           ; 
+    55                           ; Code-generator required, PIC12F1840 Definitions
+    56                           ; 
+    57                           ; SFR Addresses
+    58     0000                     	;# 
+    59     0001                     	;# 
+    60     0002                     	;# 
+    61     0003                     	;# 
+    62     0004                     	;# 
+    63     0005                     	;# 
+    64     0006                     	;# 
+    65     0007                     	;# 
+    66     0008                     	;# 
+    67     0009                     	;# 
+    68     000A                     	;# 
+    69     000B                     	;# 
+    70     000C                     	;# 
+    71     0011                     	;# 
+    72     0012                     	;# 
+    73     0015                     	;# 
+    74     0016                     	;# 
+    75     0016                     	;# 
+    76     0017                     	;# 
+    77     0018                     	;# 
+    78     0019                     	;# 
+    79     001A                     	;# 
+    80     001B                     	;# 
+    81     001C                     	;# 
+    82     001E                     	;# 
+    83     001F                     	;# 
+    84     008C                     	;# 
+    85     0091                     	;# 
+    86     0092                     	;# 
+    87     0095                     	;# 
+    88     0096                     	;# 
+    89     0097                     	;# 
+    90     0098                     	;# 
+    91     0099                     	;# 
+    92     009A                     	;# 
+    93     009B                     	;# 
+    94     009B                     	;# 
+    95     009C                     	;# 
+    96     009D                     	;# 
+    97     009E                     	;# 
+    98     010C                     	;# 
+    99     0111                     	;# 
+   100     0112                     	;# 
+   101     0115                     	;# 
+   102     0116                     	;# 
+   103     0117                     	;# 
+   104     0118                     	;# 
+   105     0119                     	;# 
+   106     011A                     	;# 
+   107     011B                     	;# 
+   108     011D                     	;# 
+   109     011D                     	;# 
+   110     018C                     	;# 
+   111     0191                     	;# 
+   112     0191                     	;# 
+   113     0192                     	;# 
+   114     0193                     	;# 
+   115     0193                     	;# 
+   116     0193                     	;# 
+   117     0194                     	;# 
+   118     0195                     	;# 
+   119     0196                     	;# 
+   120     0197                     	;# 
+   121     0199                     	;# 
+   122     019A                     	;# 
+   123     019B                     	;# 
+   124     019B                     	;# 
+   125     019B                     	;# 
+   126     019B                     	;# 
+   127     019C                     	;# 
+   128     019C                     	;# 
+   129     019D                     	;# 
+   130     019E                     	;# 
+   131     019F                     	;# 
+   132     020C                     	;# 
+   133     0211                     	;# 
+   134     0211                     	;# 
+   135     0212                     	;# 
+   136     0212                     	;# 
+   137     0213                     	;# 
+   138     0213                     	;# 
+   139     0214                     	;# 
+   140     0214                     	;# 
+   141     0215                     	;# 
+   142     0215                     	;# 
+   143     0215                     	;# 
+   144     0216                     	;# 
+   145     0216                     	;# 
+   146     0217                     	;# 
+   147     0217                     	;# 
+   148     0291                     	;# 
+   149     0291                     	;# 
+   150     0292                     	;# 
+   151     0293                     	;# 
+   152     0294                     	;# 
+   153     0295                     	;# 
+   154     0295                     	;# 
+   155     0296                     	;# 
+   156     0391                     	;# 
+   157     0392                     	;# 
+   158     0393                     	;# 
+   159     039A                     	;# 
+   160     039C                     	;# 
+   161     039D                     	;# 
+   162     039E                     	;# 
+   163     039F                     	;# 
+   164     0FE4                     	;# 
+   165     0FE5                     	;# 
+   166     0FE6                     	;# 
+   167     0FE7                     	;# 
+   168     0FE8                     	;# 
+   169     0FE9                     	;# 
+   170     0FEA                     	;# 
+   171     0FEB                     	;# 
+   172     0FED                     	;# 
+   173     0FEE                     	;# 
+   174     0FEF                     	;# 
+   175     0000                     	;# 
+   176     0001                     	;# 
+   177     0002                     	;# 
+   178     0003                     	;# 
+   179     0004                     	;# 
+   180     0005                     	;# 
+   181     0006                     	;# 
+   182     0007                     	;# 
+   183     0008                     	;# 
+   184     0009                     	;# 
+   185     000A                     	;# 
+   186     000B                     	;# 
+   187     000C                     	;# 
+   188     0011                     	;# 
+   189     0012                     	;# 
+   190     0015                     	;# 
+   191     0016                     	;# 
+   192     0016                     	;# 
+   193     0017                     	;# 
+   194     0018                     	;# 
+   195     0019                     	;# 
+   196     001A                     	;# 
+   197     001B                     	;# 
+   198     001C                     	;# 
+   199     001E                     	;# 
+   200     001F                     	;# 
+   201     008C                     	;# 
+   202     0091                     	;# 
+   203     0092                     	;# 
+   204     0095                     	;# 
+   205     0096                     	;# 
+   206     0097                     	;# 
+   207     0098                     	;# 
+   208     0099                     	;# 
+   209     009A                     	;# 
+   210     009B                     	;# 
+   211     009B                     	;# 
+   212     009C                     	;# 
+   213     009D                     	;# 
+   214     009E                     	;# 
+   215     010C                     	;# 
+   216     0111                     	;# 
+   217     0112                     	;# 
+   218     0115                     	;# 
+   219     0116                     	;# 
+   220     0117                     	;# 
+   221     0118                     	;# 
+   222     0119                     	;# 
+   223     011A                     	;# 
+   224     011B                     	;# 
+   225     011D                     	;# 
+   226     011D                     	;# 
+   227     018C                     	;# 
+   228     0191                     	;# 
+   229     0191                     	;# 
+   230     0192                     	;# 
+   231     0193                     	;# 
+   232     0193                     	;# 
+   233     0193                     	;# 
+   234     0194                     	;# 
+   235     0195                     	;# 
+   236     0196                     	;# 
+   237     0197                     	;# 
+   238     0199                     	;# 
+   239     019A                     	;# 
+   240     019B                     	;# 
+   241     019B                     	;# 
+   242     019B                     	;# 
+   243     019B                     	;# 
+   244     019C                     	;# 
+   245     019C                     	;# 
+   246     019D                     	;# 
+   247     019E                     	;# 
+   248     019F                     	;# 
+   249     020C                     	;# 
+   250     0211                     	;# 
+   251     0211                     	;# 
+   252     0212                     	;# 
+   253     0212                     	;# 
+   254     0213                     	;# 
+   255     0213                     	;# 
+   256     0214                     	;# 
+   257     0214                     	;# 
+   258     0215                     	;# 
+   259     0215                     	;# 
+   260     0215                     	;# 
+   261     0216                     	;# 
+   262     0216                     	;# 
+   263     0217                     	;# 
+   264     0217                     	;# 
+   265     0291                     	;# 
+   266     0291                     	;# 
+   267     0292                     	;# 
+   268     0293                     	;# 
+   269     0294                     	;# 
+   270     0295                     	;# 
+   271     0295                     	;# 
+   272     0296                     	;# 
+   273     0391                     	;# 
+   274     0392                     	;# 
+   275     0393                     	;# 
+   276     039A                     	;# 
+   277     039C                     	;# 
+   278     039D                     	;# 
+   279     039E                     	;# 
+   280     039F                     	;# 
+   281     0FE4                     	;# 
+   282     0FE5                     	;# 
+   283     0FE6                     	;# 
+   284     0FE7                     	;# 
+   285     0FE8                     	;# 
+   286     0FE9                     	;# 
+   287     0FEA                     	;# 
+   288     0FEB                     	;# 
+   289     0FED                     	;# 
+   290     0FEE                     	;# 
+   291     0FEF                     	;# 
+   292     0000                     	;# 
+   293     0001                     	;# 
+   294     0002                     	;# 
+   295     0003                     	;# 
+   296     0004                     	;# 
+   297     0005                     	;# 
+   298     0006                     	;# 
+   299     0007                     	;# 
+   300     0008                     	;# 
+   301     0009                     	;# 
+   302     000A                     	;# 
+   303     000B                     	;# 
+   304     000C                     	;# 
+   305     0011                     	;# 
+   306     0012                     	;# 
+   307     0015                     	;# 
+   308     0016                     	;# 
+   309     0016                     	;# 
+   310     0017                     	;# 
+   311     0018                     	;# 
+   312     0019                     	;# 
+   313     001A                     	;# 
+   314     001B                     	;# 
+   315     001C                     	;# 
+   316     001E                     	;# 
+   317     001F                     	;# 
+   318     008C                     	;# 
+   319     0091                     	;# 
+   320     0092                     	;# 
+   321     0095                     	;# 
+   322     0096                     	;# 
+   323     0097                     	;# 
+   324     0098                     	;# 
+   325     0099                     	;# 
+   326     009A                     	;# 
+   327     009B                     	;# 
+   328     009B                     	;# 
+   329     009C                     	;# 
+   330     009D                     	;# 
+   331     009E                     	;# 
+   332     010C                     	;# 
+   333     0111                     	;# 
+   334     0112                     	;# 
+   335     0115                     	;# 
+   336     0116                     	;# 
+   337     0117                     	;# 
+   338     0118                     	;# 
+   339     0119                     	;# 
+   340     011A                     	;# 
+   341     011B                     	;# 
+   342     011D                     	;# 
+   343     011D                     	;# 
+   344     018C                     	;# 
+   345     0191                     	;# 
+   346     0191                     	;# 
+   347     0192                     	;# 
+   348     0193                     	;# 
+   349     0193                     	;# 
+   350     0193                     	;# 
+   351     0194                     	;# 
+   352     0195                     	;# 
+   353     0196                     	;# 
+   354     0197                     	;# 
+   355     0199                     	;# 
+   356     019A                     	;# 
+   357     019B                     	;# 
+   358     019B                     	;# 
+   359     019B                     	;# 
+   360     019B                     	;# 
+   361     019C                     	;# 
+   362     019C                     	;# 
+   363     019D                     	;# 
+   364     019E                     	;# 
+   365     019F                     	;# 
+   366     020C                     	;# 
+   367     0211                     	;# 
+   368     0211                     	;# 
+   369     0212                     	;# 
+   370     0212                     	;# 
+   371     0213                     	;# 
+   372     0213                     	;# 
+   373     0214                     	;# 
+   374     0214                     	;# 
+   375     0215                     	;# 
+   376     0215                     	;# 
+   377     0215                     	;# 
+   378     0216                     	;# 
+   379     0216                     	;# 
+   380     0217                     	;# 
+   381     0217                     	;# 
+   382     0291                     	;# 
+   383     0291                     	;# 
+   384     0292                     	;# 
+   385     0293                     	;# 
+   386     0294                     	;# 
+   387     0295                     	;# 
+   388     0295                     	;# 
+   389     0296                     	;# 
+   390     0391                     	;# 
+   391     0392                     	;# 
+   392     0393                     	;# 
+   393     039A                     	;# 
+   394     039C                     	;# 
+   395     039D                     	;# 
+   396     039E                     	;# 
+   397     039F                     	;# 
+   398     0FE4                     	;# 
+   399     0FE5                     	;# 
+   400     0FE6                     	;# 
+   401     0FE7                     	;# 
+   402     0FE8                     	;# 
+   403     0FE9                     	;# 
+   404     0FEA                     	;# 
+   405     0FEB                     	;# 
+   406     0FED                     	;# 
+   407     0FEE                     	;# 
+   408     0FEF                     	;# 
+   409                           
+   410                           	psect	stringtext1
+   411     0240                     __pstringtext1:
+   412     0240                     _CODE:
+   413     0240  343F               	retlw	63
+   414     0241  3400               	retlw	0
+   415     0242  3406               	retlw	6
+   416     0243  3400               	retlw	0
+   417     0244  345B               	retlw	91
+   418     0245  3400               	retlw	0
+   419     0246  344F               	retlw	79
+   420     0247  3400               	retlw	0
+   421     0248  3466               	retlw	102
+   422     0249  3400               	retlw	0
+   423     024A  346D               	retlw	109
+   424     024B  3400               	retlw	0
+   425     024C  347D               	retlw	125
+   426     024D  3400               	retlw	0
+   427     024E  3407               	retlw	7
+   428     024F  3400               	retlw	0
+   429     0250  347F               	retlw	127
+   430     0251  3400               	retlw	0
+   431     0252  346F               	retlw	111
+   432     0253  3400               	retlw	0
+   433     0254                     __end_of_CODE:
+   434     0011                     _PIR1bits	set	17
+   435     009E                     _ADCON1	set	158
+   436     0099                     _OSCCON	set	153
+   437     008C                     _TRISAbits	set	140
+   438     0091                     _PIE1bits	set	145
+   439     009B                     _ADRESL	set	155
+   440     009C                     _ADRESH	set	156
+   441     009D                     _ADCON0bits	set	157
+   442     010C                     _LATAbits	set	268
+   443     018C                     _ANSELAbits	set	396
+   444                           
+   445                           	psect	cinit
+   446     0015                     start_initialization:	
+   447                           ; #config settings
+   448                           
+   449     0015                     __initialization:
+   450                           
+   451                           ; Clear objects allocated to BANK0
+   452     0015  0020               	movlb	0	; select bank0
+   453     0016  01BB               	clrf	__pbssBANK0& (0+127)
+   454     0017  01BC               	clrf	(__pbssBANK0+1)& (0+127)
+   455     0018  01BD               	clrf	(__pbssBANK0+2)& (0+127)
+   456     0019  01BE               	clrf	(__pbssBANK0+3)& (0+127)
+   457     001A                     end_of_initialization:	
+   458                           ;End of C runtime variable initialization code
+   459                           
+   460     001A                     __end_of__initialization:
+   461     001A  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   462     001B  0020               	movlb	0
+   463     001C  3181  29CD         	ljmp	_main	;jump to C main() function
+   464                           
+   465                           	psect	bssBANK0
+   466     003B                     __pbssBANK0:
+   467     003B                     _currentResistance:
+   468     003B                     	ds	4
+   469                           
+   470                           	psect	cstackCOMMON
+   471     0070                     __pcstackCOMMON:
+   472     0070                     ?_PIC12F1840_Init:
+   473     0070                     ??_PIC12F1840_Init:	
+   474                           ; 1 bytes @ 0x0
+   475                           
+   476     0070                     ?_TM1620_Init:	
+   477                           ; 1 bytes @ 0x0
+   478                           
+   479     0070                     ?_setup:	
+   480                           ; 1 bytes @ 0x0
+   481                           
+   482     0070                     ??_setup:	
+   483                           ; 1 bytes @ 0x0
+   484                           
+   485     0070                     ?_ADsensing:	
+   486                           ; 1 bytes @ 0x0
+   487                           
+   488     0070                     ?_TM1620_Dis:	
+   489                           ; 1 bytes @ 0x0
+   490                           
+   491     0070                     ?_TM1620Sencmd:	
+   492                           ; 1 bytes @ 0x0
+   493                           
+   494     0070                     ?_TM1620Sendata:	
+   495                           ; 1 bytes @ 0x0
+   496                           
+   497     0070                     ?_main:	
+   498                           ; 1 bytes @ 0x0
+   499                           
+   500     0070                     ?_ISR:	
+   501                           ; 1 bytes @ 0x0
+   502                           
+   503     0070                     ??_ISR:	
+   504                           ; 1 bytes @ 0x0
+   505                           
+   506     0070                     ?_getADCValue:	
+   507                           ; 1 bytes @ 0x0
+   508                           
+   509     0070                     ?___lmul:	
+   510                           ; 2 bytes @ 0x0
+   511                           
+   512     0070                     TM1620Sendata@TM1620Data:	
+   513                           ; 4 bytes @ 0x0
+   514                           
+   515     0070                     ___lmul@multiplier:	
+   516                           ; 2 bytes @ 0x0
+   517                           
+   518                           
+   519                           ; 4 bytes @ 0x0
+   520     0070                     	ds	2
+   521     0072                     ??_TM1620Sendata:
+   522     0072                     ??_getADCValue:	
+   523                           ; 1 bytes @ 0x2
+   524                           
+   525                           
+   526                           ; 1 bytes @ 0x2
+   527     0072                     	ds	2
+   528     0074                     ___lmul@multiplicand:
+   529                           
+   530                           ; 4 bytes @ 0x4
+   531     0074                     	ds	2
+   532     0076                     TM1620Sendata@i:
+   533                           
+   534                           ; 1 bytes @ 0x6
+   535     0076                     	ds	1
+   536     0077                     ??_TM1620Sencmd:
+   537                           
+   538                           ; 1 bytes @ 0x7
+   539     0077                     	ds	1
+   540     0078                     ??___lmul:
+   541     0078                     ___lmul@product:	
+   542                           ; 1 bytes @ 0x8
+   543                           
+   544                           
+   545                           ; 4 bytes @ 0x8
+   546     0078                     	ds	1
+   547     0079                     getADCValue@channel:
+   548     0079                     TM1620Sencmd@com:	
+   549                           ; 1 bytes @ 0x9
+   550                           
+   551                           
+   552                           ; 1 bytes @ 0x9
+   553     0079                     	ds	1
+   554     007A                     ??_TM1620_Init:
+   555     007A                     ??_TM1620_Dis:	
+   556                           ; 1 bytes @ 0xA
+   557                           
+   558                           
+   559                           ; 1 bytes @ 0xA
+   560     007A                     	ds	2
+   561     007C                     ??___lldiv:
+   562                           
+   563                           ; 1 bytes @ 0xC
+   564     007C                     	ds	1
+   565                           
+   566                           	psect	cstackBANK0
+   567     0020                     __pcstackBANK0:
+   568     0020                     ?___lldiv:
+   569     0020                     ___lldiv@divisor:	
+   570                           ; 4 bytes @ 0x0
+   571                           
+   572                           
+   573                           ; 4 bytes @ 0x0
+   574     0020                     	ds	4
+   575     0024                     ___lldiv@dividend:
+   576                           
+   577                           ; 4 bytes @ 0x4
+   578     0024                     	ds	4
+   579     0028                     ___lldiv@quotient:
+   580                           
+   581                           ; 4 bytes @ 0x8
+   582     0028                     	ds	4
+   583     002C                     ___lldiv@counter:
+   584                           
+   585                           ; 1 bytes @ 0xC
+   586     002C                     	ds	1
+   587     002D                     ??_ADsensing:
+   588                           
+   589                           ; 1 bytes @ 0xD
+   590     002D                     	ds	4
+   591     0031                     ADsensing@voltageValue:
+   592                           
+   593                           ; 4 bytes @ 0x11
+   594     0031                     	ds	4
+   595     0035                     ADsensing@ADValue:
+   596                           
+   597                           ; 4 bytes @ 0x15
+   598     0035                     	ds	4
+   599     0039                     ??_main:
+   600                           
+   601                           ; 1 bytes @ 0x19
+   602     0039                     	ds	2
+   603                           
+   604                           	psect	maintext
+   605     01CD                     __pmaintext:	
+   606 ;;
+   607 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   608 ;;
+   609 ;; *************** function _main *****************
+   610 ;; Defined at:
+   611 ;;		line 7 in file "main.c"
+   612 ;; Parameters:    Size  Location     Type
+   613 ;;		None
+   614 ;; Auto vars:     Size  Location     Type
+   615 ;;		None
+   616 ;; Return value:  Size  Location     Type
+   617 ;;                  1    wreg      void 
+   618 ;; Registers used:
+   619 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   620 ;; Tracked objects:
+   621 ;;		On entry : B1F/0
+   622 ;;		On exit  : 0/0
+   623 ;;		Unchanged: 0/0
+   624 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   625 ;;      Params:         0       0       0       0
+   626 ;;      Locals:         0       0       0       0
+   627 ;;      Temps:          0       2       0       0
+   628 ;;      Totals:         0       2       0       0
+   629 ;;Total ram usage:        2 bytes
+   630 ;; Hardware stack levels required when called: 4
+   631 ;; This function calls:
+   632 ;;		_ADsensing
+   633 ;;		_PIC12F1840_Init
+   634 ;;		_TM1620_Dis
+   635 ;;		_TM1620_Init
+   636 ;;		_setup
+   637 ;; This function is called by:
+   638 ;;		Startup code after reset
+   639 ;; This function uses a non-reentrant model
+   640 ;;
+   641                           
+   642     01CD                     _main:	
+   643                           ;psect for function _main
+   644                           
+   645     01CD                     l935:	
+   646                           ;incstack = 0
+   647                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   648                           
+   649                           
+   650                           ;main.c: 9:  PIC12F1840_Init();
+   651     01CD  3182  2254  3181   	fcall	_PIC12F1840_Init
+   652     01D0                     l937:
+   653                           
+   654                           ;main.c: 10:  TM1620_Init();
+   655     01D0  3182  2274  3181   	fcall	_TM1620_Init
+   656     01D3                     l939:
+   657                           
+   658                           ;main.c: 11:  setup();
+   659     01D3  3182  2265  3181   	fcall	_setup
+   660     01D6                     l941:
+   661                           
+   662                           ;main.c: 12:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+   663     01D6  3029               	movlw	41
+   664     01D7  0020               	movlb	0	; select bank0
+   665     01D8  00BA               	movwf	??_main+1
+   666     01D9  3096               	movlw	150
+   667     01DA  00B9               	movwf	??_main
+   668     01DB  307F               	movlw	127
+   669     01DC                     u347:
+   670     01DC  0B89               	decfsz	9,f
+   671     01DD  29DC               	goto	u347
+   672     01DE  0BB9               	decfsz	??_main,f
+   673     01DF  29DC               	goto	u347
+   674     01E0  0BBA               	decfsz	??_main+1,f
+   675     01E1  29DC               	goto	u347
+   676     01E2                     l31:	
+   677                           ;main.c: 13:  while(1)
+   678                           
+   679                           
+   680                           ;main.c: 14:  {;main.c: 15:   ADsensing();
+   681     01E2  3180  201E  3181   	fcall	_ADsensing
+   682     01E5                     l943:
+   683                           
+   684                           ;main.c: 16:   _delay((unsigned long)((100)*(32000000/4000.0)));
+   685     01E5  3005               	movlw	5
+   686     01E6  0020               	movlb	0	; select bank0
+   687     01E7  00BA               	movwf	??_main+1
+   688     01E8  300F               	movlw	15
+   689     01E9  00B9               	movwf	??_main
+   690     01EA  30F1               	movlw	241
+   691     01EB                     u357:
+   692     01EB  0B89               	decfsz	9,f
+   693     01EC  29EB               	goto	u357
+   694     01ED  0BB9               	decfsz	??_main,f
+   695     01EE  29EB               	goto	u357
+   696     01EF  0BBA               	decfsz	??_main+1,f
+   697     01F0  29EB               	goto	u357
+   698     01F1                     l945:
+   699                           
+   700                           ;main.c: 17:   TM1620_Dis();
+   701     01F1  3180  20AD  3181   	fcall	_TM1620_Dis
+   702     01F4  29E2               	goto	l31
+   703     01F5  3180  2813         	ljmp	start
+   704     01F7                     __end_of_main:
+   705                           
+   706                           	psect	text1
+   707     0265                     __ptext1:	
+   708 ;; *************** function _setup *****************
+   709 ;; Defined at:
+   710 ;;		line 18 in file "Dew_Sensor.c"
+   711 ;; Parameters:    Size  Location     Type
+   712 ;;		None
+   713 ;; Auto vars:     Size  Location     Type
+   714 ;;		None
+   715 ;; Return value:  Size  Location     Type
+   716 ;;                  1    wreg      void 
+   717 ;; Registers used:
+   718 ;;		wreg
+   719 ;; Tracked objects:
+   720 ;;		On entry : 0/0
+   721 ;;		On exit  : 0/0
+   722 ;;		Unchanged: 0/0
+   723 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   724 ;;      Params:         0       0       0       0
+   725 ;;      Locals:         0       0       0       0
+   726 ;;      Temps:          0       0       0       0
+   727 ;;      Totals:         0       0       0       0
+   728 ;;Total ram usage:        0 bytes
+   729 ;; Hardware stack levels used: 1
+   730 ;; Hardware stack levels required when called: 1
+   731 ;; This function calls:
+   732 ;;		Nothing
+   733 ;; This function is called by:
+   734 ;;		_main
+   735 ;; This function uses a non-reentrant model
+   736 ;;
+   737                           
+   738     0265                     _setup:	
+   739                           ;psect for function _setup
+   740                           
+   741     0265                     l775:	
+   742                           ;incstack = 0
+   743                           ; Regs used in _setup: [wreg]
+   744                           
+   745                           
+   746                           ;Dew_Sensor.c: 20:  OSCCON = 0b11110000;
+   747     0265  30F0               	movlw	240
+   748     0266  0021               	movlb	1	; select bank1
+   749     0267  0099               	movwf	25	;volatile
+   750     0268                     l777:
+   751                           
+   752                           ;Dew_Sensor.c: 22:  ANSELAbits.ANSA4 = 1;
+   753     0268  0023               	movlb	3	; select bank3
+   754     0269  160C               	bsf	12,4	;volatile
+   755                           
+   756                           ;Dew_Sensor.c: 23:  ADCON1 = 0x50;
+   757     026A  3050               	movlw	80
+   758     026B  0021               	movlb	1	; select bank1
+   759     026C  009E               	movwf	30	;volatile
+   760     026D                     l779:
+   761                           
+   762                           ;Dew_Sensor.c: 24:  PIE1bits.ADIE = 1;
+   763     026D  1711               	bsf	17,6	;volatile
+   764     026E                     l781:
+   765                           
+   766                           ;Dew_Sensor.c: 25:  PIR1bits.ADIF = 0;
+   767     026E  0020               	movlb	0	; select bank0
+   768     026F  1311               	bcf	17,6	;volatile
+   769     0270                     l783:
+   770                           
+   771                           ;Dew_Sensor.c: 26:  ADCON0bits.GO = 0;
+   772     0270  0021               	movlb	1	; select bank1
+   773     0271  109D               	bcf	29,1	;volatile
+   774     0272                     l785:
+   775                           
+   776                           ;Dew_Sensor.c: 27:  ADCON0bits.ADON = 1;
+   777     0272  141D               	bsf	29,0	;volatile
+   778     0273                     l79:
+   779     0273  0008               	return
+   780     0274                     __end_of_setup:
+   781                           
+   782                           	psect	text2
+   783     0274                     __ptext2:	
+   784 ;; *************** function _TM1620_Init *****************
+   785 ;; Defined at:
+   786 ;;		line 30 in file "Dew_Sensor.c"
+   787 ;; Parameters:    Size  Location     Type
+   788 ;;		None
+   789 ;; Auto vars:     Size  Location     Type
+   790 ;;		None
+   791 ;; Return value:  Size  Location     Type
+   792 ;;                  1    wreg      void 
+   793 ;; Registers used:
+   794 ;;		wreg, status,2, status,0, pclath, cstack
+   795 ;; Tracked objects:
+   796 ;;		On entry : 0/0
+   797 ;;		On exit  : 0/0
+   798 ;;		Unchanged: 0/0
+   799 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   800 ;;      Params:         0       0       0       0
+   801 ;;      Locals:         0       0       0       0
+   802 ;;      Temps:          0       0       0       0
+   803 ;;      Totals:         0       0       0       0
+   804 ;;Total ram usage:        0 bytes
+   805 ;; Hardware stack levels used: 1
+   806 ;; Hardware stack levels required when called: 3
+   807 ;; This function calls:
+   808 ;;		_TM1620Sencmd
+   809 ;; This function is called by:
+   810 ;;		_main
+   811 ;; This function uses a non-reentrant model
+   812 ;;
+   813                           
+   814     0274                     _TM1620_Init:	
+   815                           ;psect for function _TM1620_Init
+   816                           
+   817     0274                     l903:	
+   818                           ;incstack = 0
+   819                           ; Regs used in _TM1620_Init: [wreg+status,2+status,0+pclath+cstack]
+   820                           
+   821                           
+   822                           ;Dew_Sensor.c: 32:  TM1620Sencmd(0x02);
+   823     0274  3002               	movlw	2
+   824     0275  3182  2220  3182   	fcall	_TM1620Sencmd
+   825                           
+   826                           ;Dew_Sensor.c: 33:  TM1620Sencmd(0x40);
+   827     0278  3040               	movlw	64
+   828     0279  3182  2220  3182   	fcall	_TM1620Sencmd
+   829                           
+   830                           ;Dew_Sensor.c: 34:     TM1620Sencmd(0xC0);
+   831     027C  30C0               	movlw	192
+   832     027D  3182  2220  3182   	fcall	_TM1620Sencmd
+   833     0280                     l82:
+   834     0280  0008               	return
+   835     0281                     __end_of_TM1620_Init:
+   836                           
+   837                           	psect	text3
+   838     00AD                     __ptext3:	
+   839 ;; *************** function _TM1620_Dis *****************
+   840 ;; Defined at:
+   841 ;;		line 37 in file "Dew_Sensor.c"
+   842 ;; Parameters:    Size  Location     Type
+   843 ;;		None
+   844 ;; Auto vars:     Size  Location     Type
+   845 ;;		None
+   846 ;; Return value:  Size  Location     Type
+   847 ;;                  1    wreg      void 
+   848 ;; Registers used:
+   849 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   850 ;; Tracked objects:
+   851 ;;		On entry : 0/0
+   852 ;;		On exit  : 0/0
+   853 ;;		Unchanged: 0/0
+   854 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   855 ;;      Params:         0       0       0       0
+   856 ;;      Locals:         0       0       0       0
+   857 ;;      Temps:          1       0       0       0
+   858 ;;      Totals:         1       0       0       0
+   859 ;;Total ram usage:        1 bytes
+   860 ;; Hardware stack levels used: 1
+   861 ;; Hardware stack levels required when called: 3
+   862 ;; This function calls:
+   863 ;;		_TM1620Sencmd
+   864 ;;		_TM1620Sendata
+   865 ;; This function is called by:
+   866 ;;		_main
+   867 ;; This function uses a non-reentrant model
+   868 ;;
+   869                           
+   870     00AD                     _TM1620_Dis:	
+   871                           ;psect for function _TM1620_Dis
+   872                           
+   873     00AD                     l911:	
+   874                           ;incstack = 0
+   875                           ; Regs used in _TM1620_Dis: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   876                           
+   877                           
+   878                           ;Dew_Sensor.c: 40:     TM1620Sendata(CODE[0]);
+   879     00AD  3040               	movlw	low (_CODE| (0+32768))
+   880     00AE  0084               	movwf	4
+   881     00AF  3082               	movlw	high (_CODE| (0+32768))
+   882     00B0  0085               	movwf	5
+   883     00B1  3F00               	moviw [0]fsr0
+   884     00B2  00F0               	movwf	TM1620Sendata@TM1620Data
+   885     00B3  3F01               	moviw [1]fsr0
+   886     00B4  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   887     00B5  3181  21F7  3180   	fcall	_TM1620Sendata
+   888     00B8                     l913:
+   889                           
+   890                           ;Dew_Sensor.c: 41:     TM1620Sendata(0x00);
+   891     00B8  3000               	movlw	0
+   892     00B9  00F0               	movwf	TM1620Sendata@TM1620Data
+   893     00BA  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   894     00BB  3181  21F7  3180   	fcall	_TM1620Sendata
+   895     00BE                     l915:
+   896                           
+   897                           ;Dew_Sensor.c: 42:  TM1620Sendata(CODE[1]);
+   898     00BE  3042               	movlw	low ((_CODE+2)| (0+32768))
+   899     00BF  0084               	movwf	4
+   900     00C0  3082               	movlw	high ((_CODE+2)| (0+32768))
+   901     00C1  0085               	movwf	5
+   902     00C2  3F00               	moviw [0]fsr0
+   903     00C3  00F0               	movwf	TM1620Sendata@TM1620Data
+   904     00C4  3F01               	moviw [1]fsr0
+   905     00C5  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   906     00C6  3181  21F7  3180   	fcall	_TM1620Sendata
+   907                           
+   908                           ;Dew_Sensor.c: 43:     TM1620Sendata(0x00);
+   909     00C9  3000               	movlw	0
+   910     00CA  00F0               	movwf	TM1620Sendata@TM1620Data
+   911     00CB  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   912     00CC  3181  21F7  3180   	fcall	_TM1620Sendata
+   913     00CF                     l917:
+   914                           
+   915                           ;Dew_Sensor.c: 44:  TM1620Sendata(CODE[2]);
+   916     00CF  3044               	movlw	low ((_CODE+4)| (0+32768))
+   917     00D0  0084               	movwf	4
+   918     00D1  3082               	movlw	high ((_CODE+4)| (0+32768))
+   919     00D2  0085               	movwf	5
+   920     00D3  3F00               	moviw [0]fsr0
+   921     00D4  00F0               	movwf	TM1620Sendata@TM1620Data
+   922     00D5  3F01               	moviw [1]fsr0
+   923     00D6  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   924     00D7  3181  21F7  3180   	fcall	_TM1620Sendata
+   925     00DA                     l919:
+   926                           
+   927                           ;Dew_Sensor.c: 45:     TM1620Sendata(0x00);
+   928     00DA  3000               	movlw	0
+   929     00DB  00F0               	movwf	TM1620Sendata@TM1620Data
+   930     00DC  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   931     00DD  3181  21F7  3180   	fcall	_TM1620Sendata
+   932                           
+   933                           ;Dew_Sensor.c: 46:  TM1620Sendata(CODE[3]);
+   934     00E0  3046               	movlw	low ((_CODE+6)| (0+32768))
+   935     00E1  0084               	movwf	4
+   936     00E2  3082               	movlw	high ((_CODE+6)| (0+32768))
+   937     00E3  0085               	movwf	5
+   938     00E4  3F00               	moviw [0]fsr0
+   939     00E5  00F0               	movwf	TM1620Sendata@TM1620Data
+   940     00E6  3F01               	moviw [1]fsr0
+   941     00E7  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   942     00E8  3181  21F7  3180   	fcall	_TM1620Sendata
+   943     00EB                     l921:
+   944                           
+   945                           ;Dew_Sensor.c: 47:     TM1620Sendata(0x00);
+   946     00EB  3000               	movlw	0
+   947     00EC  00F0               	movwf	TM1620Sendata@TM1620Data
+   948     00ED  00F1               	movwf	TM1620Sendata@TM1620Data+1
+   949     00EE  3181  21F7  3180   	fcall	_TM1620Sendata
+   950     00F1                     l923:
+   951                           
+   952                           ;Dew_Sensor.c: 49:  LATAbits.LATA0 = 1;
+   953     00F1  0022               	movlb	2	; select bank2
+   954     00F2  140C               	bsf	12,0	;volatile
+   955     00F3                     l925:
+   956                           
+   957                           ;Dew_Sensor.c: 50:  _delay((unsigned long)((1)*(32000000/4000.0)));
+   958     00F3  300B               	movlw	11
+   959     00F4  00FA               	movwf	??_TM1620_Dis
+   960     00F5  3062               	movlw	98
+   961     00F6                     u367:
+   962     00F6  0B89               	decfsz	9,f
+   963     00F7  28F6               	goto	u367
+   964     00F8  0BFA               	decfsz	??_TM1620_Dis,f
+   965     00F9  28F6               	goto	u367
+   966     00FA  3200               	nop2
+   967     00FB                     l927:
+   968                           
+   969                           ;Dew_Sensor.c: 51:  LATAbits.LATA0 = 0;
+   970     00FB  0022               	movlb	2	; select bank2
+   971     00FC  100C               	bcf	12,0	;volatile
+   972     00FD                     l929:
+   973                           
+   974                           ;Dew_Sensor.c: 52:  _delay((unsigned long)((1)*(32000000/4000.0)));
+   975     00FD  300B               	movlw	11
+   976     00FE  00FA               	movwf	??_TM1620_Dis
+   977     00FF  3062               	movlw	98
+   978     0100                     u377:
+   979     0100  0B89               	decfsz	9,f
+   980     0101  2900               	goto	u377
+   981     0102  0BFA               	decfsz	??_TM1620_Dis,f
+   982     0103  2900               	goto	u377
+   983     0104  3200               	nop2
+   984     0105                     l931:
+   985                           
+   986                           ;Dew_Sensor.c: 53:  TM1620Sencmd(0x8F);
+   987     0105  308F               	movlw	143
+   988     0106  3182  2220  3180   	fcall	_TM1620Sencmd
+   989     0109                     l933:
+   990                           
+   991                           ;Dew_Sensor.c: 54:  LATAbits.LATA0 = 1;
+   992     0109  0022               	movlb	2	; select bank2
+   993     010A  140C               	bsf	12,0	;volatile
+   994     010B                     l85:
+   995     010B  0008               	return
+   996     010C                     __end_of_TM1620_Dis:
+   997                           
+   998                           	psect	text4
+   999     0220                     __ptext4:	
+  1000 ;; *************** function _TM1620Sencmd *****************
+  1001 ;; Defined at:
+  1002 ;;		line 69 in file "Dew_Sensor.c"
+  1003 ;; Parameters:    Size  Location     Type
+  1004 ;;  com             1    wreg     unsigned char 
+  1005 ;; Auto vars:     Size  Location     Type
+  1006 ;;  com             1    9[COMMON] unsigned char 
+  1007 ;; Return value:  Size  Location     Type
+  1008 ;;                  1    wreg      void 
+  1009 ;; Registers used:
+  1010 ;;		wreg, status,2, status,0, pclath, cstack
+  1011 ;; Tracked objects:
+  1012 ;;		On entry : 0/0
+  1013 ;;		On exit  : 0/0
+  1014 ;;		Unchanged: 0/0
+  1015 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1016 ;;      Params:         0       0       0       0
+  1017 ;;      Locals:         1       0       0       0
+  1018 ;;      Temps:          2       0       0       0
+  1019 ;;      Totals:         3       0       0       0
+  1020 ;;Total ram usage:        3 bytes
+  1021 ;; Hardware stack levels used: 1
+  1022 ;; Hardware stack levels required when called: 2
+  1023 ;; This function calls:
+  1024 ;;		_TM1620Sendata
+  1025 ;; This function is called by:
+  1026 ;;		_TM1620_Init
+  1027 ;;		_TM1620_Dis
+  1028 ;; This function uses a non-reentrant model
+  1029 ;;
+  1030                           
+  1031     0220                     _TM1620Sencmd:	
+  1032                           ;psect for function _TM1620Sencmd
+  1033                           
+  1034                           
+  1035                           ;incstack = 0
+  1036                           ; Regs used in _TM1620Sencmd: [wreg+status,2+status,0+pclath+cstack]
+  1037                           ;TM1620Sencmd@com stored from wreg
+  1038     0220  00F9               	movwf	TM1620Sencmd@com
+  1039     0221                     l857:
+  1040                           
+  1041                           ;Dew_Sensor.c: 69: void TM1620Sencmd(char com);Dew_Sensor.c: 70:  {;Dew_Sensor.c: 71:  L
+      +                          ATAbits.LATA0 = 1;
+  1042     0221  0022               	movlb	2	; select bank2
+  1043     0222  140C               	bsf	12,0	;volatile
+  1044     0223                     l859:
+  1045                           
+  1046                           ;Dew_Sensor.c: 72:  _delay((unsigned long)((1)*(32000000/4000.0)));
+  1047     0223  300B               	movlw	11
+  1048     0224  00F7               	movwf	??_TM1620Sencmd
+  1049     0225  3062               	movlw	98
+  1050     0226                     u387:
+  1051     0226  0B89               	decfsz	9,f
+  1052     0227  2A26               	goto	u387
+  1053     0228  0BF7               	decfsz	??_TM1620Sencmd,f
+  1054     0229  2A26               	goto	u387
+  1055     022A  3200               	nop2
+  1056     022B                     l861:
+  1057                           
+  1058                           ;Dew_Sensor.c: 73:  LATAbits.LATA0 = 0;
+  1059     022B  0022               	movlb	2	; select bank2
+  1060     022C  100C               	bcf	12,0	;volatile
+  1061                           
+  1062                           ;Dew_Sensor.c: 74:  _delay((unsigned long)((1)*(32000000/4000.0)));
+  1063     022D  300B               	movlw	11
+  1064     022E  00F7               	movwf	??_TM1620Sencmd
+  1065     022F  3062               	movlw	98
+  1066     0230                     u397:
+  1067     0230  0B89               	decfsz	9,f
+  1068     0231  2A30               	goto	u397
+  1069     0232  0BF7               	decfsz	??_TM1620Sencmd,f
+  1070     0233  2A30               	goto	u397
+  1071     0234  3200               	nop2
+  1072     0235                     l863:
+  1073                           
+  1074                           ;Dew_Sensor.c: 75:  TM1620Sendata(com);
+  1075     0235  0879               	movf	TM1620Sencmd@com,w
+  1076     0236  00F7               	movwf	??_TM1620Sencmd
+  1077     0237  01F8               	clrf	??_TM1620Sencmd+1
+  1078     0238  0877               	movf	??_TM1620Sencmd,w
+  1079     0239  00F0               	movwf	TM1620Sendata@TM1620Data
+  1080     023A  0878               	movf	??_TM1620Sencmd+1,w
+  1081     023B  00F1               	movwf	TM1620Sendata@TM1620Data+1
+  1082     023C  3181  21F7  3182   	fcall	_TM1620Sendata
+  1083     023F                     l93:
+  1084     023F  0008               	return
+  1085     0240                     __end_of_TM1620Sencmd:
+  1086                           
+  1087                           	psect	text5
+  1088     01F7                     __ptext5:	
+  1089 ;; *************** function _TM1620Sendata *****************
+  1090 ;; Defined at:
+  1091 ;;		line 57 in file "Dew_Sensor.c"
+  1092 ;; Parameters:    Size  Location     Type
+  1093 ;;  TM1620Data      2    0[COMMON] int 
+  1094 ;; Auto vars:     Size  Location     Type
+  1095 ;;  i               1    6[COMMON] unsigned char 
+  1096 ;; Return value:  Size  Location     Type
+  1097 ;;                  1    wreg      void 
+  1098 ;; Registers used:
+  1099 ;;		wreg, status,2, status,0
+  1100 ;; Tracked objects:
+  1101 ;;		On entry : 0/0
+  1102 ;;		On exit  : 0/0
+  1103 ;;		Unchanged: 0/0
+  1104 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1105 ;;      Params:         2       0       0       0
+  1106 ;;      Locals:         1       0       0       0
+  1107 ;;      Temps:          4       0       0       0
+  1108 ;;      Totals:         7       0       0       0
+  1109 ;;Total ram usage:        7 bytes
+  1110 ;; Hardware stack levels used: 1
+  1111 ;; Hardware stack levels required when called: 1
+  1112 ;; This function calls:
+  1113 ;;		Nothing
+  1114 ;; This function is called by:
+  1115 ;;		_TM1620_Dis
+  1116 ;;		_TM1620Sencmd
+  1117 ;; This function uses a non-reentrant model
+  1118 ;;
+  1119                           
+  1120     01F7                     _TM1620Sendata:	
+  1121                           ;psect for function _TM1620Sendata
+  1122                           
+  1123     01F7                     l833:	
+  1124                           ;incstack = 0
+  1125                           ; Regs used in _TM1620Sendata: [wreg+status,2+status,0]
+  1126                           
+  1127                           
+  1128                           ;Dew_Sensor.c: 57: void TM1620Sendata(int TM1620Data);Dew_Sensor.c: 58: {;Dew_Sensor.c: 
+      +                          59:  char i;;Dew_Sensor.c: 60:  for(i = 0; i < 8; i++)
+  1129     01F7  01F6               	clrf	TM1620Sendata@i
+  1130     01F8                     l88:
+  1131                           
+  1132                           ;Dew_Sensor.c: 61:  {;Dew_Sensor.c: 62:   LATAbits.LATA1 = 0;
+  1133     01F8  0022               	movlb	2	; select bank2
+  1134     01F9  108C               	bcf	12,1	;volatile
+  1135     01FA                     l839:
+  1136                           
+  1137                           ;Dew_Sensor.c: 63:   LATAbits.LATA2 = 1 & (TM1620Data >> i);
+  1138     01FA  0A76               	incf	TM1620Sendata@i,w
+  1139     01FB  00F2               	movwf	??_TM1620Sendata
+  1140     01FC  0871               	movf	TM1620Sendata@TM1620Data+1,w
+  1141     01FD  00F4               	movwf	??_TM1620Sendata+2
+  1142     01FE  0870               	movf	TM1620Sendata@TM1620Data,w
+  1143     01FF  00F3               	movwf	??_TM1620Sendata+1
+  1144     0200  2A04               	goto	u184
+  1145     0201                     u185:
+  1146     0201  0D74               	rlf	??_TM1620Sendata+2,w
+  1147     0202  0CF4               	rrf	??_TM1620Sendata+2,f
+  1148     0203  0CF3               	rrf	??_TM1620Sendata+1,f
+  1149     0204                     u184:
+  1150     0204  0BF2               	decfsz	??_TM1620Sendata,f
+  1151     0205  2A01               	goto	u185
+  1152     0206  0873               	movf	??_TM1620Sendata+1,w
+  1153     0207  3901               	andlw	1
+  1154     0208  00F5               	movwf	??_TM1620Sendata+3
+  1155     0209  0DF5               	rlf	??_TM1620Sendata+3,f
+  1156     020A  0DF5               	rlf	??_TM1620Sendata+3,f
+  1157     020B  0022               	movlb	2	; select bank2
+  1158     020C  080C               	movf	12,w	;volatile
+  1159     020D  0675               	xorwf	??_TM1620Sendata+3,w
+  1160     020E  39FB               	andlw	-5
+  1161     020F  0675               	xorwf	??_TM1620Sendata+3,w
+  1162     0210  008C               	movwf	12	;volatile
+  1163     0211                     l841:
+  1164                           
+  1165                           ;Dew_Sensor.c: 64:   LATAbits.LATA1 = 1;
+  1166     0211  148C               	bsf	12,1	;volatile
+  1167     0212                     l843:
+  1168                           
+  1169                           ;Dew_Sensor.c: 65:   _delay((unsigned long)((3)*(32000000/4000000.0)));
+  1170     0212  3008               	movlw	8
+  1171     0213                     u407:
+  1172     0213  0B89               	decfsz	9,f
+  1173     0214  2A13               	goto	u407
+  1174     0215                     l845:
+  1175                           
+  1176                           ;Dew_Sensor.c: 66:  }
+  1177     0215  3001               	movlw	1
+  1178     0216  00F2               	movwf	??_TM1620Sendata
+  1179     0217  0872               	movf	??_TM1620Sendata,w
+  1180     0218  07F6               	addwf	TM1620Sendata@i,f
+  1181     0219  3008               	movlw	8
+  1182     021A  0276               	subwf	TM1620Sendata@i,w
+  1183     021B  1C03               	skipc
+  1184     021C  2A1E               	goto	u191
+  1185     021D  2A1F               	goto	u190
+  1186     021E                     u191:
+  1187     021E  29F8               	goto	l88
+  1188     021F                     u190:
+  1189     021F                     l90:
+  1190     021F  0008               	return
+  1191     0220                     __end_of_TM1620Sendata:
+  1192                           
+  1193                           	psect	text6
+  1194     0254                     __ptext6:	
+  1195 ;; *************** function _PIC12F1840_Init *****************
+  1196 ;; Defined at:
+  1197 ;;		line 6 in file "Dew_Sensor.c"
+  1198 ;; Parameters:    Size  Location     Type
+  1199 ;;		None
+  1200 ;; Auto vars:     Size  Location     Type
+  1201 ;;		None
+  1202 ;; Return value:  Size  Location     Type
+  1203 ;;                  1    wreg      void 
+  1204 ;; Registers used:
+  1205 ;;		None
+  1206 ;; Tracked objects:
+  1207 ;;		On entry : 0/0
+  1208 ;;		On exit  : 0/0
+  1209 ;;		Unchanged: 0/0
+  1210 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1211 ;;      Params:         0       0       0       0
+  1212 ;;      Locals:         0       0       0       0
+  1213 ;;      Temps:          0       0       0       0
+  1214 ;;      Totals:         0       0       0       0
+  1215 ;;Total ram usage:        0 bytes
+  1216 ;; Hardware stack levels used: 1
+  1217 ;; Hardware stack levels required when called: 1
+  1218 ;; This function calls:
+  1219 ;;		Nothing
+  1220 ;; This function is called by:
+  1221 ;;		_main
+  1222 ;; This function uses a non-reentrant model
+  1223 ;;
+  1224                           
+  1225     0254                     _PIC12F1840_Init:	
+  1226                           ;psect for function _PIC12F1840_Init
+  1227                           
+  1228     0254                     l771:	
+  1229                           ;incstack = 0
+  1230                           ; Regs used in _PIC12F1840_Init: []
+  1231                           
+  1232                           
+  1233                           ;Dew_Sensor.c: 8:  LATAbits.LATA0 = 1;
+  1234     0254  0022               	movlb	2	; select bank2
+  1235     0255  140C               	bsf	12,0	;volatile
+  1236                           
+  1237                           ;Dew_Sensor.c: 9:  TRISAbits.TRISA0 = 0;
+  1238     0256  0021               	movlb	1	; select bank1
+  1239     0257  100C               	bcf	12,0	;volatile
+  1240                           
+  1241                           ;Dew_Sensor.c: 10:  LATAbits.LATA1 = 1;
+  1242     0258  0022               	movlb	2	; select bank2
+  1243     0259  148C               	bsf	12,1	;volatile
+  1244                           
+  1245                           ;Dew_Sensor.c: 11:  TRISAbits.TRISA1 = 0;
+  1246     025A  0021               	movlb	1	; select bank1
+  1247     025B  108C               	bcf	12,1	;volatile
+  1248                           
+  1249                           ;Dew_Sensor.c: 12:  LATAbits.LATA2 = 1;
+  1250     025C  0022               	movlb	2	; select bank2
+  1251     025D  150C               	bsf	12,2	;volatile
+  1252                           
+  1253                           ;Dew_Sensor.c: 13:  TRISAbits.TRISA2 = 0;
+  1254     025E  0021               	movlb	1	; select bank1
+  1255     025F  110C               	bcf	12,2	;volatile
+  1256                           
+  1257                           ;Dew_Sensor.c: 14:  LATAbits.LATA4 = 0;
+  1258     0260  0022               	movlb	2	; select bank2
+  1259     0261  120C               	bcf	12,4	;volatile
+  1260                           
+  1261                           ;Dew_Sensor.c: 15:  TRISAbits.TRISA4 = 0;
+  1262     0262  0021               	movlb	1	; select bank1
+  1263     0263  120C               	bcf	12,4	;volatile
+  1264     0264                     l76:
+  1265     0264  0008               	return
+  1266     0265                     __end_of_PIC12F1840_Init:
+  1267                           
+  1268                           	psect	text7
+  1269     001E                     __ptext7:	
+  1270 ;; *************** function _ADsensing *****************
+  1271 ;; Defined at:
+  1272 ;;		line 30 in file "main.c"
+  1273 ;; Parameters:    Size  Location     Type
+  1274 ;;		None
+  1275 ;; Auto vars:     Size  Location     Type
+  1276 ;;  ADValue         4   21[BANK0 ] unsigned long 
+  1277 ;;  voltageValue    4   17[BANK0 ] unsigned long 
+  1278 ;; Return value:  Size  Location     Type
+  1279 ;;                  1    wreg      void 
+  1280 ;; Registers used:
+  1281 ;;		wreg, status,2, status,0, pclath, cstack
+  1282 ;; Tracked objects:
+  1283 ;;		On entry : 0/0
+  1284 ;;		On exit  : 0/0
+  1285 ;;		Unchanged: 0/0
+  1286 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1287 ;;      Params:         0       0       0       0
+  1288 ;;      Locals:         0       8       0       0
+  1289 ;;      Temps:          0       4       0       0
+  1290 ;;      Totals:         0      12       0       0
+  1291 ;;Total ram usage:       12 bytes
+  1292 ;; Hardware stack levels used: 1
+  1293 ;; Hardware stack levels required when called: 2
+  1294 ;; This function calls:
+  1295 ;;		___lldiv
+  1296 ;;		___lmul
+  1297 ;;		_getADCValue
+  1298 ;; This function is called by:
+  1299 ;;		_main
+  1300 ;; This function uses a non-reentrant model
+  1301 ;;
+  1302                           
+  1303     001E                     _ADsensing:	
+  1304                           ;psect for function _ADsensing
+  1305                           
+  1306     001E                     l905:	
+  1307                           ;incstack = 0
+  1308                           ; Regs used in _ADsensing: [wreg+status,2+status,0+pclath+cstack]
+  1309                           
+  1310     001E                     l907:
+  1311                           
+  1312                           ;main.c: 34:  ADValue = getADCValue(0x03);
+  1313     001E  3003               	movlw	3
+  1314     001F  3181  2167  3180   	fcall	_getADCValue
+  1315     0022  0870               	movf	?_getADCValue,w
+  1316     0023  0020               	movlb	0	; select bank0
+  1317     0024  00B5               	movwf	ADsensing@ADValue
+  1318     0025  0871               	movf	?_getADCValue+1,w
+  1319     0026  00B6               	movwf	ADsensing@ADValue+1
+  1320     0027  01B7               	clrf	ADsensing@ADValue+2
+  1321     0028  01B8               	clrf	ADsensing@ADValue+3
+  1322     0029                     l909:
+  1323                           
+  1324                           ;main.c: 35:  ADValue = 1024 - ADValue;
+  1325     0029  3000               	movlw	0
+  1326     002A  00AD               	movwf	??_ADsensing
+  1327     002B  3004               	movlw	4
+  1328     002C  00AE               	movwf	??_ADsensing+1
+  1329     002D  3000               	movlw	0
+  1330     002E  00AF               	movwf	??_ADsensing+2
+  1331     002F  3000               	movlw	0
+  1332     0030  00B0               	movwf	??_ADsensing+3
+  1333     0031  0835               	movf	ADsensing@ADValue,w
+  1334     0032  02AD               	subwf	??_ADsensing,f
+  1335     0033  0836               	movf	ADsensing@ADValue+1,w
+  1336     0034  3BAE               	subwfb	??_ADsensing+1,f
+  1337     0035  0837               	movf	ADsensing@ADValue+2,w
+  1338     0036  3BAF               	subwfb	??_ADsensing+2,f
+  1339     0037  0838               	movf	ADsensing@ADValue+3,w
+  1340     0038  3BB0               	subwfb	??_ADsensing+3,f
+  1341     0039  0830               	movf	??_ADsensing+3,w
+  1342     003A  00B8               	movwf	ADsensing@ADValue+3
+  1343     003B  082F               	movf	??_ADsensing+2,w
+  1344     003C  00B7               	movwf	ADsensing@ADValue+2
+  1345     003D  082E               	movf	??_ADsensing+1,w
+  1346     003E  00B6               	movwf	ADsensing@ADValue+1
+  1347     003F  082D               	movf	??_ADsensing,w
+  1348     0040  00B5               	movwf	ADsensing@ADValue
+  1349                           
+  1350                           ;main.c: 36:  voltageValue = ADValue * 500 / 1024;
+  1351     0041  0838               	movf	ADsensing@ADValue+3,w
+  1352     0042  00F3               	movwf	___lmul@multiplier+3
+  1353     0043  0837               	movf	ADsensing@ADValue+2,w
+  1354     0044  00F2               	movwf	___lmul@multiplier+2
+  1355     0045  0836               	movf	ADsensing@ADValue+1,w
+  1356     0046  00F1               	movwf	___lmul@multiplier+1
+  1357     0047  0835               	movf	ADsensing@ADValue,w
+  1358     0048  00F0               	movwf	___lmul@multiplier
+  1359     0049  3000               	movlw	0
+  1360     004A  00F7               	movwf	___lmul@multiplicand+3
+  1361     004B  3000               	movlw	0
+  1362     004C  00F6               	movwf	___lmul@multiplicand+2
+  1363     004D  3001               	movlw	1
+  1364     004E  00F5               	movwf	___lmul@multiplicand+1
+  1365     004F  30F4               	movlw	244
+  1366     0050  00F4               	movwf	___lmul@multiplicand
+  1367     0051  3181  219A  3180   	fcall	___lmul
+  1368     0054  0870               	movf	?___lmul,w
+  1369     0055  0020               	movlb	0	; select bank0
+  1370     0056  00AD               	movwf	??_ADsensing
+  1371     0057  0871               	movf	?___lmul+1,w
+  1372     0058  00AE               	movwf	??_ADsensing+1
+  1373     0059  0872               	movf	?___lmul+2,w
+  1374     005A  00AF               	movwf	??_ADsensing+2
+  1375     005B  0873               	movf	?___lmul+3,w
+  1376     005C  00B0               	movwf	??_ADsensing+3
+  1377     005D  300A               	movlw	10
+  1378     005E                     u335:
+  1379     005E  36B0               	lsrf	??_ADsensing+3,f
+  1380     005F  0CAF               	rrf	??_ADsensing+2,f
+  1381     0060  0CAE               	rrf	??_ADsensing+1,f
+  1382     0061  0CAD               	rrf	??_ADsensing,f
+  1383     0062                     u330:
+  1384     0062  0B89               	decfsz	9,f
+  1385     0063  285E               	goto	u335
+  1386     0064  0830               	movf	??_ADsensing+3,w
+  1387     0065  00B4               	movwf	ADsensing@voltageValue+3
+  1388     0066  082F               	movf	??_ADsensing+2,w
+  1389     0067  00B3               	movwf	ADsensing@voltageValue+2
+  1390     0068  082E               	movf	??_ADsensing+1,w
+  1391     0069  00B2               	movwf	ADsensing@voltageValue+1
+  1392     006A  082D               	movf	??_ADsensing,w
+  1393     006B  00B1               	movwf	ADsensing@voltageValue
+  1394                           
+  1395                           ;main.c: 37:  currentResistance = (unsigned long)(500 - voltageValue) * 10000 / voltageV
+      +                          alue;
+  1396     006C  0834               	movf	ADsensing@voltageValue+3,w
+  1397     006D  00A3               	movwf	___lldiv@divisor+3
+  1398     006E  0833               	movf	ADsensing@voltageValue+2,w
+  1399     006F  00A2               	movwf	___lldiv@divisor+2
+  1400     0070  0832               	movf	ADsensing@voltageValue+1,w
+  1401     0071  00A1               	movwf	___lldiv@divisor+1
+  1402     0072  0831               	movf	ADsensing@voltageValue,w
+  1403     0073  00A0               	movwf	___lldiv@divisor
+  1404     0074  30F4               	movlw	244
+  1405     0075  00AD               	movwf	??_ADsensing
+  1406     0076  3001               	movlw	1
+  1407     0077  00AE               	movwf	??_ADsensing+1
+  1408     0078  3000               	movlw	0
+  1409     0079  00AF               	movwf	??_ADsensing+2
+  1410     007A  3000               	movlw	0
+  1411     007B  00B0               	movwf	??_ADsensing+3
+  1412     007C  0831               	movf	ADsensing@voltageValue,w
+  1413     007D  02AD               	subwf	??_ADsensing,f
+  1414     007E  0832               	movf	ADsensing@voltageValue+1,w
+  1415     007F  3BAE               	subwfb	??_ADsensing+1,f
+  1416     0080  0833               	movf	ADsensing@voltageValue+2,w
+  1417     0081  3BAF               	subwfb	??_ADsensing+2,f
+  1418     0082  0834               	movf	ADsensing@voltageValue+3,w
+  1419     0083  3BB0               	subwfb	??_ADsensing+3,f
+  1420     0084  0830               	movf	??_ADsensing+3,w
+  1421     0085  00F3               	movwf	___lmul@multiplier+3
+  1422     0086  082F               	movf	??_ADsensing+2,w
+  1423     0087  00F2               	movwf	___lmul@multiplier+2
+  1424     0088  082E               	movf	??_ADsensing+1,w
+  1425     0089  00F1               	movwf	___lmul@multiplier+1
+  1426     008A  082D               	movf	??_ADsensing,w
+  1427     008B  00F0               	movwf	___lmul@multiplier
+  1428     008C  3000               	movlw	0
+  1429     008D  00F7               	movwf	___lmul@multiplicand+3
+  1430     008E  3000               	movlw	0
+  1431     008F  00F6               	movwf	___lmul@multiplicand+2
+  1432     0090  3027               	movlw	39
+  1433     0091  00F5               	movwf	___lmul@multiplicand+1
+  1434     0092  3010               	movlw	16
+  1435     0093  00F4               	movwf	___lmul@multiplicand
+  1436     0094  3181  219A  3180   	fcall	___lmul
+  1437     0097  0873               	movf	?___lmul+3,w
+  1438     0098  0020               	movlb	0	; select bank0
+  1439     0099  00A7               	movwf	___lldiv@dividend+3
+  1440     009A  0872               	movf	?___lmul+2,w
+  1441     009B  00A6               	movwf	___lldiv@dividend+2
+  1442     009C  0871               	movf	?___lmul+1,w
+  1443     009D  00A5               	movwf	___lldiv@dividend+1
+  1444     009E  0870               	movf	?___lmul,w
+  1445     009F  00A4               	movwf	___lldiv@dividend
+  1446     00A0  3181  210C  3180   	fcall	___lldiv
+  1447     00A3  0020               	movlb	0	; select bank0
+  1448     00A4  0823               	movf	?___lldiv+3,w
+  1449     00A5  00BE               	movwf	_currentResistance+3
+  1450     00A6  0822               	movf	?___lldiv+2,w
+  1451     00A7  00BD               	movwf	_currentResistance+2
+  1452     00A8  0821               	movf	?___lldiv+1,w
+  1453     00A9  00BC               	movwf	_currentResistance+1
+  1454     00AA  0820               	movf	?___lldiv,w
+  1455     00AB  00BB               	movwf	_currentResistance
+  1456     00AC                     l43:
+  1457     00AC  0008               	return
+  1458     00AD                     __end_of_ADsensing:
+  1459                           
+  1460                           	psect	text8
+  1461     0167                     __ptext8:	
+  1462 ;; *************** function _getADCValue *****************
+  1463 ;; Defined at:
+  1464 ;;		line 21 in file "main.c"
+  1465 ;; Parameters:    Size  Location     Type
+  1466 ;;  channel         1    wreg     unsigned char 
+  1467 ;; Auto vars:     Size  Location     Type
+  1468 ;;  channel         1    9[COMMON] unsigned char 
+  1469 ;; Return value:  Size  Location     Type
+  1470 ;;                  2    0[COMMON] unsigned int 
+  1471 ;; Registers used:
+  1472 ;;		wreg, status,2, status,0
+  1473 ;; Tracked objects:
+  1474 ;;		On entry : 0/0
+  1475 ;;		On exit  : 0/0
+  1476 ;;		Unchanged: 0/0
+  1477 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1478 ;;      Params:         2       0       0       0
+  1479 ;;      Locals:         1       0       0       0
+  1480 ;;      Temps:          7       0       0       0
+  1481 ;;      Totals:        10       0       0       0
+  1482 ;;Total ram usage:       10 bytes
+  1483 ;; Hardware stack levels used: 1
+  1484 ;; Hardware stack levels required when called: 1
+  1485 ;; This function calls:
+  1486 ;;		Nothing
+  1487 ;; This function is called by:
+  1488 ;;		_ADsensing
+  1489 ;; This function uses a non-reentrant model
+  1490 ;;
+  1491                           
+  1492     0167                     _getADCValue:	
+  1493                           ;psect for function _getADCValue
+  1494                           
+  1495                           
+  1496                           ;incstack = 0
+  1497                           ; Regs used in _getADCValue: [wreg+status,2+status,0]
+  1498                           ;getADCValue@channel stored from wreg
+  1499     0167  00F9               	movwf	getADCValue@channel
+  1500     0168                     l847:
+  1501                           
+  1502                           ;main.c: 21: unsigned int getADCValue(unsigned char channel);main.c: 22: {;main.c: 23:  
+      +                             ADCON0bits.CHS = channel;
+  1503     0168  0879               	movf	getADCValue@channel,w
+  1504     0169  00F2               	movwf	??_getADCValue
+  1505     016A  0DF2               	rlf	??_getADCValue,f
+  1506     016B  0DF2               	rlf	??_getADCValue,f
+  1507     016C  0021               	movlb	1	; select bank1
+  1508     016D  081D               	movf	29,w	;volatile
+  1509     016E  0672               	xorwf	??_getADCValue,w
+  1510     016F  3983               	andlw	-125
+  1511     0170  0672               	xorwf	??_getADCValue,w
+  1512     0171  009D               	movwf	29	;volatile
+  1513     0172                     l849:
+  1514                           
+  1515                           ;main.c: 24:     _delay((unsigned long)((5)*(32000000/4000.0)));
+  1516     0172  3034               	movlw	52
+  1517     0173  00F2               	movwf	??_getADCValue
+  1518     0174  30F2               	movlw	242
+  1519     0175                     u417:
+  1520     0175  0B89               	decfsz	9,f
+  1521     0176  2975               	goto	u417
+  1522     0177  0BF2               	decfsz	??_getADCValue,f
+  1523     0178  2975               	goto	u417
+  1524     0179                     l851:
+  1525                           
+  1526                           ;main.c: 25:     ADCON0bits.GO = 1;
+  1527     0179  0021               	movlb	1	; select bank1
+  1528     017A  149D               	bsf	29,1	;volatile
+  1529     017B                     l37:	
+  1530                           ;main.c: 26:     while (ADCON0bits.GO);
+  1531                           
+  1532     017B  189D               	btfsc	29,1	;volatile
+  1533     017C  297E               	goto	u201
+  1534     017D  297F               	goto	u200
+  1535     017E                     u201:
+  1536     017E  297B               	goto	l37
+  1537     017F                     u200:
+  1538     017F                     l853:
+  1539                           
+  1540                           ;main.c: 27:     return (unsigned int)((ADRESH << 2) | (ADRESL >> 6));
+  1541     017F  081B               	movf	27,w	;volatile
+  1542     0180  00F2               	movwf	??_getADCValue
+  1543     0181  3006               	movlw	6
+  1544     0182                     u215:
+  1545     0182  36F2               	lsrf	??_getADCValue,f
+  1546     0183  0B89               	decfsz	9,f
+  1547     0184  2982               	goto	u215
+  1548     0185  0872               	movf	??_getADCValue,w
+  1549     0186  00F3               	movwf	??_getADCValue+1
+  1550     0187  01F4               	clrf	??_getADCValue+2
+  1551     0188  081C               	movf	28,w	;volatile
+  1552     0189  00F5               	movwf	??_getADCValue+3
+  1553     018A  01F6               	clrf	??_getADCValue+4
+  1554     018B  35F5               	lslf	??_getADCValue+3,f
+  1555     018C  0DF6               	rlf	??_getADCValue+4,f
+  1556     018D  35F5               	lslf	??_getADCValue+3,f
+  1557     018E  0DF6               	rlf	??_getADCValue+4,f
+  1558     018F  0873               	movf	??_getADCValue+1,w
+  1559     0190  0475               	iorwf	??_getADCValue+3,w
+  1560     0191  00F7               	movwf	??_getADCValue+5
+  1561     0192  0874               	movf	??_getADCValue+2,w
+  1562     0193  0476               	iorwf	??_getADCValue+4,w
+  1563     0194  00F8               	movwf	??_getADCValue+6
+  1564     0195  0877               	movf	??_getADCValue+5,w
+  1565     0196  00F0               	movwf	?_getADCValue
+  1566     0197  0878               	movf	??_getADCValue+6,w
+  1567     0198  00F1               	movwf	?_getADCValue+1
+  1568     0199                     l40:
+  1569     0199  0008               	return
+  1570     019A                     __end_of_getADCValue:
+  1571                           
+  1572                           	psect	text9
+  1573     019A                     __ptext9:	
+  1574 ;; *************** function ___lmul *****************
+  1575 ;; Defined at:
+  1576 ;;		line 15 in file "C:\XC8\pic\sources\c99\common\Umul32.c"
+  1577 ;; Parameters:    Size  Location     Type
+  1578 ;;  multiplier      4    0[COMMON] unsigned long 
+  1579 ;;  multiplicand    4    4[COMMON] unsigned long 
+  1580 ;; Auto vars:     Size  Location     Type
+  1581 ;;  product         4    8[COMMON] unsigned long 
+  1582 ;; Return value:  Size  Location     Type
+  1583 ;;                  4    0[COMMON] unsigned long 
+  1584 ;; Registers used:
+  1585 ;;		wreg, status,2, status,0
+  1586 ;; Tracked objects:
+  1587 ;;		On entry : 0/0
+  1588 ;;		On exit  : 0/0
+  1589 ;;		Unchanged: 0/0
+  1590 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1591 ;;      Params:         8       0       0       0
+  1592 ;;      Locals:         4       0       0       0
+  1593 ;;      Temps:          0       0       0       0
+  1594 ;;      Totals:        12       0       0       0
+  1595 ;;Total ram usage:       12 bytes
+  1596 ;; Hardware stack levels used: 1
+  1597 ;; Hardware stack levels required when called: 1
+  1598 ;; This function calls:
+  1599 ;;		Nothing
+  1600 ;; This function is called by:
+  1601 ;;		_ADsensing
+  1602 ;; This function uses a non-reentrant model
+  1603 ;;
+  1604                           
+  1605     019A                     ___lmul:	
+  1606                           ;psect for function ___lmul
+  1607                           
+  1608     019A                     l865:	
+  1609                           ;incstack = 0
+  1610                           ; Regs used in ___lmul: [wreg+status,2+status,0]
+  1611                           
+  1612     019A  3000               	movlw	0
+  1613     019B  00FB               	movwf	___lmul@product+3
+  1614     019C  3000               	movlw	0
+  1615     019D  00FA               	movwf	___lmul@product+2
+  1616     019E  3000               	movlw	0
+  1617     019F  00F9               	movwf	___lmul@product+1
+  1618     01A0  3000               	movlw	0
+  1619     01A1  00F8               	movwf	___lmul@product
+  1620     01A2                     l867:
+  1621     01A2  1C70               	btfss	___lmul@multiplier,0
+  1622     01A3  29A5               	goto	u221
+  1623     01A4  29A6               	goto	u220
+  1624     01A5                     u221:
+  1625     01A5  29AE               	goto	l871
+  1626     01A6                     u220:
+  1627     01A6                     l869:
+  1628     01A6  0874               	movf	___lmul@multiplicand,w
+  1629     01A7  07F8               	addwf	___lmul@product,f
+  1630     01A8  0875               	movf	___lmul@multiplicand+1,w
+  1631     01A9  3DF9               	addwfc	___lmul@product+1,f
+  1632     01AA  0876               	movf	___lmul@multiplicand+2,w
+  1633     01AB  3DFA               	addwfc	___lmul@product+2,f
+  1634     01AC  0877               	movf	___lmul@multiplicand+3,w
+  1635     01AD  3DFB               	addwfc	___lmul@product+3,f
+  1636     01AE                     l871:
+  1637     01AE  3001               	movlw	1
+  1638     01AF                     u235:
+  1639     01AF  35F4               	lslf	___lmul@multiplicand,f
+  1640     01B0  0DF5               	rlf	___lmul@multiplicand+1,f
+  1641     01B1  0DF6               	rlf	___lmul@multiplicand+2,f
+  1642     01B2  0DF7               	rlf	___lmul@multiplicand+3,f
+  1643     01B3  0B89               	decfsz	9,f
+  1644     01B4  29AF               	goto	u235
+  1645     01B5                     l873:
+  1646     01B5  3001               	movlw	1
+  1647     01B6                     u245:
+  1648     01B6  36F3               	lsrf	___lmul@multiplier+3,f
+  1649     01B7  0CF2               	rrf	___lmul@multiplier+2,f
+  1650     01B8  0CF1               	rrf	___lmul@multiplier+1,f
+  1651     01B9  0CF0               	rrf	___lmul@multiplier,f
+  1652     01BA  0B89               	decfsz	9,f
+  1653     01BB  29B6               	goto	u245
+  1654     01BC  0873               	movf	___lmul@multiplier+3,w
+  1655     01BD  0472               	iorwf	___lmul@multiplier+2,w
+  1656     01BE  0471               	iorwf	___lmul@multiplier+1,w
+  1657     01BF  0470               	iorwf	___lmul@multiplier,w
+  1658     01C0  1D03               	skipz
+  1659     01C1  29C3               	goto	u251
+  1660     01C2  29C4               	goto	u250
+  1661     01C3                     u251:
+  1662     01C3  29A2               	goto	l867
+  1663     01C4                     u250:
+  1664     01C4                     l875:
+  1665     01C4  087B               	movf	___lmul@product+3,w
+  1666     01C5  00F3               	movwf	?___lmul+3
+  1667     01C6  087A               	movf	___lmul@product+2,w
+  1668     01C7  00F2               	movwf	?___lmul+2
+  1669     01C8  0879               	movf	___lmul@product+1,w
+  1670     01C9  00F1               	movwf	?___lmul+1
+  1671     01CA  0878               	movf	___lmul@product,w
+  1672     01CB  00F0               	movwf	?___lmul
+  1673     01CC                     l257:
+  1674     01CC  0008               	return
+  1675     01CD                     __end_of___lmul:
+  1676                           
+  1677                           	psect	text10
+  1678     010C                     __ptext10:	
+  1679 ;; *************** function ___lldiv *****************
+  1680 ;; Defined at:
+  1681 ;;		line 5 in file "C:\XC8\pic\sources\c99\common\__lldiv.c"
+  1682 ;; Parameters:    Size  Location     Type
+  1683 ;;  divisor         4    0[BANK0 ] unsigned long 
+  1684 ;;  dividend        4    4[BANK0 ] unsigned long 
+  1685 ;; Auto vars:     Size  Location     Type
+  1686 ;;  quotient        4    8[BANK0 ] unsigned long 
+  1687 ;;  counter         1   12[BANK0 ] unsigned char 
+  1688 ;; Return value:  Size  Location     Type
+  1689 ;;                  4    0[BANK0 ] unsigned long 
+  1690 ;; Registers used:
+  1691 ;;		wreg, status,2, status,0
+  1692 ;; Tracked objects:
+  1693 ;;		On entry : 0/0
+  1694 ;;		On exit  : 0/0
+  1695 ;;		Unchanged: 0/0
+  1696 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1697 ;;      Params:         0       8       0       0
+  1698 ;;      Locals:         0       5       0       0
+  1699 ;;      Temps:          1       0       0       0
+  1700 ;;      Totals:         1      13       0       0
+  1701 ;;Total ram usage:       14 bytes
+  1702 ;; Hardware stack levels used: 1
+  1703 ;; Hardware stack levels required when called: 1
+  1704 ;; This function calls:
+  1705 ;;		Nothing
+  1706 ;; This function is called by:
+  1707 ;;		_ADsensing
+  1708 ;; This function uses a non-reentrant model
+  1709 ;;
+  1710                           
+  1711     010C                     ___lldiv:	
+  1712                           ;psect for function ___lldiv
+  1713                           
+  1714     010C                     l879:	
+  1715                           ;incstack = 0
+  1716                           ; Regs used in ___lldiv: [wreg+status,2+status,0]
+  1717                           
+  1718     010C  3000               	movlw	0
+  1719     010D  0020               	movlb	0	; select bank0
+  1720     010E  00AB               	movwf	___lldiv@quotient+3
+  1721     010F  3000               	movlw	0
+  1722     0110  00AA               	movwf	___lldiv@quotient+2
+  1723     0111  3000               	movlw	0
+  1724     0112  00A9               	movwf	___lldiv@quotient+1
+  1725     0113  3000               	movlw	0
+  1726     0114  00A8               	movwf	___lldiv@quotient
+  1727     0115  0823               	movf	___lldiv@divisor+3,w
+  1728     0116  0422               	iorwf	___lldiv@divisor+2,w
+  1729     0117  0421               	iorwf	___lldiv@divisor+1,w
+  1730     0118  0420               	iorwf	___lldiv@divisor,w
+  1731     0119  1903               	skipnz
+  1732     011A  291C               	goto	u261
+  1733     011B  291D               	goto	u260
+  1734     011C                     u261:
+  1735     011C  295E               	goto	l899
+  1736     011D                     u260:
+  1737     011D                     l881:
+  1738     011D  01AC               	clrf	___lldiv@counter
+  1739     011E  0AAC               	incf	___lldiv@counter,f
+  1740     011F  292B               	goto	l885
+  1741     0120                     l883:
+  1742     0120  3001               	movlw	1
+  1743     0121                     u275:
+  1744     0121  35A0               	lslf	___lldiv@divisor,f
+  1745     0122  0DA1               	rlf	___lldiv@divisor+1,f
+  1746     0123  0DA2               	rlf	___lldiv@divisor+2,f
+  1747     0124  0DA3               	rlf	___lldiv@divisor+3,f
+  1748     0125  0B89               	decfsz	9,f
+  1749     0126  2921               	goto	u275
+  1750     0127  3001               	movlw	1
+  1751     0128  00FC               	movwf	??___lldiv
+  1752     0129  087C               	movf	??___lldiv,w
+  1753     012A  07AC               	addwf	___lldiv@counter,f
+  1754     012B                     l885:
+  1755     012B  1FA3               	btfss	___lldiv@divisor+3,7
+  1756     012C  292E               	goto	u281
+  1757     012D  292F               	goto	u280
+  1758     012E                     u281:
+  1759     012E  2920               	goto	l883
+  1760     012F                     u280:
+  1761     012F                     l887:
+  1762     012F  3001               	movlw	1
+  1763     0130                     u295:
+  1764     0130  35A8               	lslf	___lldiv@quotient,f
+  1765     0131  0DA9               	rlf	___lldiv@quotient+1,f
+  1766     0132  0DAA               	rlf	___lldiv@quotient+2,f
+  1767     0133  0DAB               	rlf	___lldiv@quotient+3,f
+  1768     0134  0B89               	decfsz	9,f
+  1769     0135  2930               	goto	u295
+  1770     0136                     l889:
+  1771     0136  0823               	movf	___lldiv@divisor+3,w
+  1772     0137  0227               	subwf	___lldiv@dividend+3,w
+  1773     0138  1D03               	skipz
+  1774     0139  2944               	goto	u305
+  1775     013A  0822               	movf	___lldiv@divisor+2,w
+  1776     013B  0226               	subwf	___lldiv@dividend+2,w
+  1777     013C  1D03               	skipz
+  1778     013D  2944               	goto	u305
+  1779     013E  0821               	movf	___lldiv@divisor+1,w
+  1780     013F  0225               	subwf	___lldiv@dividend+1,w
+  1781     0140  1D03               	skipz
+  1782     0141  2944               	goto	u305
+  1783     0142  0820               	movf	___lldiv@divisor,w
+  1784     0143  0224               	subwf	___lldiv@dividend,w
+  1785     0144                     u305:
+  1786     0144  1C03               	skipc
+  1787     0145  2947               	goto	u301
+  1788     0146  2948               	goto	u300
+  1789     0147                     u301:
+  1790     0147  2951               	goto	l895
+  1791     0148                     u300:
+  1792     0148                     l891:
+  1793     0148  0820               	movf	___lldiv@divisor,w
+  1794     0149  02A4               	subwf	___lldiv@dividend,f
+  1795     014A  0821               	movf	___lldiv@divisor+1,w
+  1796     014B  3BA5               	subwfb	___lldiv@dividend+1,f
+  1797     014C  0822               	movf	___lldiv@divisor+2,w
+  1798     014D  3BA6               	subwfb	___lldiv@dividend+2,f
+  1799     014E  0823               	movf	___lldiv@divisor+3,w
+  1800     014F  3BA7               	subwfb	___lldiv@dividend+3,f
+  1801     0150                     l893:
+  1802     0150  1428               	bsf	___lldiv@quotient,0
+  1803     0151                     l895:
+  1804     0151  3001               	movlw	1
+  1805     0152                     u315:
+  1806     0152  36A3               	lsrf	___lldiv@divisor+3,f
+  1807     0153  0CA2               	rrf	___lldiv@divisor+2,f
+  1808     0154  0CA1               	rrf	___lldiv@divisor+1,f
+  1809     0155  0CA0               	rrf	___lldiv@divisor,f
+  1810     0156  0B89               	decfsz	9,f
+  1811     0157  2952               	goto	u315
+  1812     0158                     l897:
+  1813     0158  3001               	movlw	1
+  1814     0159  02AC               	subwf	___lldiv@counter,f
+  1815     015A  1D03               	btfss	3,2
+  1816     015B  295D               	goto	u321
+  1817     015C  295E               	goto	u320
+  1818     015D                     u321:
+  1819     015D  292F               	goto	l887
+  1820     015E                     u320:
+  1821     015E                     l899:
+  1822     015E  082B               	movf	___lldiv@quotient+3,w
+  1823     015F  00A3               	movwf	?___lldiv+3
+  1824     0160  082A               	movf	___lldiv@quotient+2,w
+  1825     0161  00A2               	movwf	?___lldiv+2
+  1826     0162  0829               	movf	___lldiv@quotient+1,w
+  1827     0163  00A1               	movwf	?___lldiv+1
+  1828     0164  0828               	movf	___lldiv@quotient,w
+  1829     0165  00A0               	movwf	?___lldiv
+  1830     0166                     l279:
+  1831     0166  0008               	return
+  1832     0167                     __end_of___lldiv:
+  1833                           
+  1834                           	psect	intentry
+  1835     0004                     __pintentry:	
+  1836 ;; *************** function _ISR *****************
+  1837 ;; Defined at:
+  1838 ;;		line 40 in file "main.c"
+  1839 ;; Parameters:    Size  Location     Type
+  1840 ;;		None
+  1841 ;; Auto vars:     Size  Location     Type
+  1842 ;;		None
+  1843 ;; Return value:  Size  Location     Type
+  1844 ;;                  1    wreg      void 
+  1845 ;; Registers used:
+  1846 ;;		None
+  1847 ;; Tracked objects:
+  1848 ;;		On entry : 0/0
+  1849 ;;		On exit  : 0/0
+  1850 ;;		Unchanged: 0/0
+  1851 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1852 ;;      Params:         0       0       0       0
+  1853 ;;      Locals:         0       0       0       0
+  1854 ;;      Temps:          0       0       0       0
+  1855 ;;      Totals:         0       0       0       0
+  1856 ;;Total ram usage:        0 bytes
+  1857 ;; Hardware stack levels used: 1
+  1858 ;; This function calls:
+  1859 ;;		Nothing
+  1860 ;; This function is called by:
+  1861 ;;		Interrupt level 1
+  1862 ;; This function uses a non-reentrant model
+  1863 ;;
+  1864                           
+  1865     0004                     _ISR:
+  1866                           
+  1867                           ;incstack = 0
+  1868     0004  147E               	bsf	int$flags,0	;set compiler interrupt flag (level 1)
+  1869                           
+  1870                           ; Regs used in _ISR: []
+  1871     0005  3180               	pagesel	$
+  1872     0006                     i1l829:
+  1873                           
+  1874                           ;main.c: 42:  if(PIR1bits.ADIF == 1)
+  1875     0006  0020               	movlb	0	; select bank0
+  1876     0007  1F11               	btfss	17,6	;volatile
+  1877     0008  280A               	goto	u17_21
+  1878     0009  280B               	goto	u17_20
+  1879     000A                     u17_21:
+  1880     000A  2811               	goto	i1l49
+  1881     000B                     u17_20:
+  1882     000B                     i1l831:
+  1883                           
+  1884                           ;main.c: 43:  {;main.c: 44:   PIE1bits.ADIE = 0;
+  1885     000B  0021               	movlb	1	; select bank1
+  1886     000C  1311               	bcf	17,6	;volatile
+  1887                           
+  1888                           ;main.c: 45:   PIR1bits.ADIF = 0;
+  1889     000D  0020               	movlb	0	; select bank0
+  1890     000E  1311               	bcf	17,6	;volatile
+  1891                           
+  1892                           ;main.c: 49:   PIE1bits.ADIE = 1;
+  1893     000F  0021               	movlb	1	; select bank1
+  1894     0010  1711               	bsf	17,6	;volatile
+  1895     0011                     i1l49:
+  1896     0011  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+  1897     0012  0009               	retfie
+  1898     0013                     __end_of_ISR:
+  1899     007E                     btemp	set	126	;btemp
+  1900     007E                     int$flags	set	126
+  1901     007E                     wtemp0	set	126
+  1902                           
+  1903                           	psect	config
+  1904                           
+  1905                           ;Config register CONFIG1 @ 0x8007
+  1906                           ;	Oscillator Selection
+  1907                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+  1908                           ;	Watchdog Timer Enable
+  1909                           ;	WDTE = OFF, WDT disabled
+  1910                           ;	Power-up Timer Enable
+  1911                           ;	PWRTE = OFF, PWRT disabled
+  1912                           ;	MCLR Pin Function Select
+  1913                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+  1914                           ;	Flash Program Memory Code Protection
+  1915                           ;	CP = OFF, Program memory code protection is disabled
+  1916                           ;	Data Memory Code Protection
+  1917                           ;	CPD = OFF, Data memory code protection is disabled
+  1918                           ;	Brown-out Reset Enable
+  1919                           ;	BOREN = ON, Brown-out Reset enabled
+  1920                           ;	Clock Out Enable
+  1921                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+      +                          pin
+  1922                           ;	Internal/External Switchover
+  1923                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+  1924                           ;	Fail-Safe Clock Monitor Enable
+  1925                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+  1926     8007                     	org	32775
+  1927     8007  2FE4               	dw	12260
+  1928                           
+  1929                           ;Config register CONFIG2 @ 0x8008
+  1930                           ;	Flash Memory Self-Write Protection
+  1931                           ;	WRT = OFF, Write protection off
+  1932                           ;	PLL Enable
+  1933                           ;	PLLEN = ON, 4x PLL enabled
+  1934                           ;	Stack Overflow/Underflow Reset Enable
+  1935                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  1936                           ;	Brown-out Reset Voltage Selection
+  1937                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  1938                           ;	In-Circuit Debugger Mode
+  1939                           ;	DEBUG = OFF, In-Circuit Debugger disabled, ICSPCLK and ICSPDAT are general purpose I/O
+      +                           pins
+  1940                           ;	Low-Voltage Programming Enable
+  1941                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
+  1942     8008                     	org	32776
+  1943     8008  1FFF               	dw	8191
+
+Data Sizes:
+    Strings     0
+    Constant    20
+    Data        0
+    BSS         4
+    Persistent  32
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     13      13
+    BANK0            80     27      31
+    BANK1            80      0       0
+    BANK2            64      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _TM1620_Init->_TM1620Sencmd
+    _TM1620_Dis->_TM1620Sencmd
+    _TM1620Sencmd->_TM1620Sendata
+    _ADsensing->___lldiv
+    ___lldiv->___lmul
+
+Critical Paths under _ISR in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_ADsensing
+    _ADsensing->___lldiv
+
+Critical Paths under _ISR in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _ISR in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _ISR in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0    3190
+                                             25 BANK0      2     2      0
+                          _ADsensing
+                    _PIC12F1840_Init
+                         _TM1620_Dis
+                        _TM1620_Init
+                              _setup
+ ---------------------------------------------------------------------------------
+ (1) _setup                                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _TM1620_Init                                          0     0      0     796
+                       _TM1620Sencmd
+ ---------------------------------------------------------------------------------
+ (1) _TM1620_Dis                                           1     1      0    1570
+                                             10 COMMON     1     1      0
+                       _TM1620Sencmd
+                      _TM1620Sendata
+ ---------------------------------------------------------------------------------
+ (2) _TM1620Sencmd                                         3     3      0     796
+                                              7 COMMON     3     3      0
+                      _TM1620Sendata
+ ---------------------------------------------------------------------------------
+ (3) _TM1620Sendata                                        7     5      2     774
+                                              0 COMMON     7     5      2
+ ---------------------------------------------------------------------------------
+ (1) _PIC12F1840_Init                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _ADsensing                                           12    12      0     824
+                                             13 BANK0     12    12      0
+                            ___lldiv
+                             ___lmul
+                        _getADCValue
+ ---------------------------------------------------------------------------------
+ (2) _getADCValue                                         10     8      2      22
+                                              0 COMMON    10     8      2
+ ---------------------------------------------------------------------------------
+ (2) ___lmul                                              12     4      8     396
+                                              0 COMMON    12     4      8
+ ---------------------------------------------------------------------------------
+ (2) ___lldiv                                             14     6      8     314
+                                             12 COMMON     1     1      0
+                                              0 BANK0     13     5      8
+                             ___lmul (ARG)
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _ISR                                                  0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ADsensing
+     ___lldiv
+       ___lmul (ARG)
+     ___lmul
+     _getADCValue
+   _PIC12F1840_Init
+   _TM1620_Dis
+     _TM1620Sencmd
+       _TM1620Sendata
+     _TM1620Sendata
+   _TM1620_Init
+     _TM1620Sencmd
+   _setup
+
+ _ISR (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM              E0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      D       D       2       92.9%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0      2C       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50     1B      1F       6       38.8%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITBANK2            40      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BANK2               40      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+DATA                 0      0      2C      11        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
+Symbol Table                                                                                   Mon Dec 11 17:12:41 2023
+
+            ?_TM1620_Dis 0070             ?_TM1620_Init 0070            ?_TM1620Sencmd 0070  
+                     l31 01E2                       l40 0199                       l43 00AC  
+                     l37 017B                       l90 021F                       l82 0280  
+                     l76 0264                       l93 023F                       l85 010B  
+                     l79 0273                       l88 01F8           ?_TM1620Sendata 0070  
+                    l257 01CC                      l279 0166                      l911 00AD  
+                    l903 0274                      l905 001E                      l841 0211  
+                    l833 01F7                      l921 00EB                      l913 00B8  
+                    l851 0179                      l907 001E                      l771 0254  
+                    l843 0212                      l931 0105                      l923 00F1  
+                    l915 00BE                      l853 017F                      l909 0029  
+                    l845 0215                      l861 022B                      l933 0109  
+                    l925 00F3                      l917 00CF                      l781 026E  
+                    l941 01D6                      l871 01AE                      l847 0168  
+                    l839 01FA                      l863 0235                      l927 00FB  
+                    l919 00DA                      l783 0270                      l775 0265  
+                    l943 01E5                      l935 01CD                      l881 011D  
+                    l873 01B5                      l865 019A                      l849 0172  
+                    l857 0221                      l929 00FD                      l785 0272  
+                    l777 0268                      l945 01F1                      l937 01D0  
+                    l891 0148                      l883 0120                      l875 01C4  
+                    l867 01A2                      l859 0223                      l779 026D  
+                    l939 01D3                      l893 0150                      l885 012B  
+                    l869 01A6                      l895 0151                      l887 012F  
+                    l879 010C                      l897 0158                      l889 0136  
+                    l899 015E                      u200 017F                      u201 017E  
+                    u300 0148                      u220 01A6                      u301 0147  
+                    u221 01A5                      u215 0182                      u320 015E  
+                    u321 015D                      u305 0144                      u250 01C4  
+                    u330 0062                      u315 0152                      u251 01C3  
+                    u235 01AF                      u260 011D                      u261 011C  
+                    u245 01B6                      u190 021F                      u335 005E  
+                    u191 021E                      u407 0213                      u280 012F  
+                    u184 0204                      u281 012E                      u417 0175  
+                    u185 0201                      u275 0121                      u347 01DC  
+                    _ISR 0004                      u357 01EB                      u295 0130  
+                    u367 00F6                      u377 0100                      u387 0226  
+                    u397 0230                      wreg 0009                     ?_ISR 0070  
+                   _CODE 0240                     i1l49 0011    ADsensing@voltageValue 0031  
+                   _main 01CD                     fsr0h 0005                     fsr0l 0004  
+                   btemp 007E                     start 0013           ??_TM1620Sencmd 0077  
+                  ??_ISR 0070                    ?_main 0070          __end_of___lldiv 0167  
+                  i1l831 000B                    i1l829 0006                    u17_20 000B  
+                  u17_21 000A      ___lmul@multiplicand 0074          _PIC12F1840_Init 0254  
+                  _setup 0265                    status 0003                    wtemp0 007E  
+           __end_of_CODE 0254          __initialization 0015             __end_of_main 01F7  
+        ??_TM1620Sendata 0072                   ??_main 0039                   _ADCON1 009E  
+                 _ADRESH 009C                   _ADRESL 009B                   ?_setup 0070  
+      __end_of_ADsensing 00AD                   _OSCCON 0099                   ___lmul 019A  
+              ??___lldiv 007C  __end_of_PIC12F1840_Init 0265     __end_of_TM1620Sencmd 0240  
+__end_of__initialization 001A       getADCValue@channel 0079             ??_TM1620_Dis 007A  
+         __pcstackCOMMON 0070            __end_of_setup 0274                  ??_setup 0070  
+     __end_of_TM1620_Dis 010C               __pbssBANK0 003B               __pmaintext 01CD  
+                ?___lmul 0070               __pintentry 0004           ___lmul@product 0078  
+       ?_PIC12F1840_Init 0070           TM1620Sendata@i 0076            ??_getADCValue 0072  
+                ___lldiv 010C                  __ptext1 0265                  __ptext2 0274  
+                __ptext3 00AD                  __ptext4 0220                  __ptext5 01F7  
+                __ptext6 0254                  __ptext7 001E                  __ptext8 0167  
+                __ptext9 019A     end_of_initialization 001A                _ADsensing 001E  
+        ___lldiv@divisor 0020          ___lldiv@counter 002C             _TM1620Sencmd 0220  
+    __end_of_getADCValue 019A    __end_of_TM1620Sendata 0220                _TRISAbits 008C  
+             ?_ADsensing 0070            ??_TM1620_Init 007A           __end_of___lmul 01CD  
+    start_initialization 0015              __end_of_ISR 0013              _getADCValue 0167  
+               ??___lmul 0078      __end_of_TM1620_Init 0281                ___latbits 0001  
+          __pcstackBANK0 0020              ??_ADsensing 002D                 ?___lldiv 0020  
+               _LATAbits 010C                 _PIE1bits 0091          TM1620Sencmd@com 0079  
+               _PIR1bits 0011              _TM1620_Init 0274               _ADCON0bits 009D  
+      ___lmul@multiplier 0070  TM1620Sendata@TM1620Data 0070               _ANSELAbits 018C  
+               __ptext10 010C         ADsensing@ADValue 0035        ??_PIC12F1840_Init 0070  
+           ?_getADCValue 0070               _TM1620_Dis 00AD                 int$flags 007E  
+      _currentResistance 003B                 intlevel1 0000         ___lldiv@dividend 0024  
+          __pstringtext1 0240            _TM1620Sendata 01F7         ___lldiv@quotient 0028  
