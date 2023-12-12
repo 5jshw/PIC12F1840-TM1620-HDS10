@@ -3,6 +3,10 @@
 [d edition pro ]
 [d chip 12F1840 ]
 [d frameptr 6 ]
+"5 C:\XC8\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 C:\XC8\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
 "10 C:\XC8\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\XC8\pic\sources\c99\common\Umul8_16.c
@@ -11,29 +15,104 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"6 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
+"4 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
 [v _PIC12F1840_Init PIC12F1840_Init `(v  1 e 1 0 ]
-"21
-[v _TM1620Sendata TM1620Sendata `(v  1 e 1 0 ]
-"33
-[v _TM1620Sencmd TM1620Sencmd `(v  1 e 1 0 ]
-"43
-[v _TM1620_Init TM1620_Init `(v  1 e 1 0 ]
-"50
-[v _TM1620_Dis TM1620_Dis `(v  1 e 1 0 ]
-"6 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+"14
+[v _setup setup `(v  1 e 1 0 ]
+"10 D:\PIC12\PIC12F1840-DewSensor.X\main.c
 [v _main main `(v  1 e 1 0 ]
-[s S63 . 1 `uc 1 TRISA0 1 0 :1:0 
+"27
+[v _getADCValue getADCValue `(ui  1 e 2 0 ]
+"36
+[v _ADsensing ADsensing `(v  1 e 1 0 ]
+"50
+[v _ISR ISR `II(v  1 e 1 0 ]
+"61
+[v _TM1620_Dis TM1620_Dis `(v  1 e 1 0 ]
+"87
+[v _TM1620Sendata TM1620Sendata `(v  1 e 1 0 ]
+"99
+[v _TM1620Sencmd TM1620Sencmd `(v  1 e 1 0 ]
+"108
+[v _Numerical_Partitioning Numerical_Partitioning `(v  1 e 1 0 ]
+[s S261 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"374 C:/Users/79972/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8\pic\include\proc\pic12f1840.h
+[s S270 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S275 . 1 `S261 1 . 1 0 `S270 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES275  1 e 1 @11 ]
+[s S86 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"496
+[u S95 . 1 `S86 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES95  1 e 1 @17 ]
+[s S222 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
 `uc 1 TRISA4 1 0 :1:4 
 `uc 1 TRISA5 1 0 :1:5 
 ]
-"1017 C:/Users/79972/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8\pic\include\proc\pic12f1840.h
-[u S70 . 1 `S63 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES70  1 e 1 @140 ]
-[s S46 . 1 `uc 1 LATA0 1 0 :1:0 
+"1017
+[u S229 . 1 `S222 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES229  1 e 1 @140 ]
+[s S107 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1069
+[u S116 . 1 `S107 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES116  1 e 1 @145 ]
+"1405
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1546
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1566
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+[s S49 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+"1611
+[s S57 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S61 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[u S64 . 1 `S49 1 . 1 0 `S57 1 . 1 0 `S61 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES64  1 e 1 @157 ]
+"1666
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+[s S138 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -41,45 +120,117 @@
 `uc 1 LATA5 1 0 :1:5 
 ]
 "1747
-[u S53 . 1 `S46 1 . 1 0 ]
-[v _LATAbits LATAbits `VES53  1 e 1 @268 ]
-"4 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
-[v _CODE CODE `DC[10]i  1 e 20 0 ]
-"6 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+[u S145 . 1 `S138 1 . 1 0 ]
+[v _LATAbits LATAbits `VES145  1 e 1 @268 ]
+[s S240 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+]
+"2412
+[s S246 . 1 `uc 1 ANSELA 1 0 :5:0 
+]
+[u S248 . 1 `S240 1 . 1 0 `S246 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES248  1 e 1 @396 ]
+"4 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+[v _CODE CODE `DC[10]uc  1 e 10 0 ]
+"5
+[v _ADValue ADValue `ui  1 e 2 0 ]
+"6
+[v _Thousandth Thousandth `uc  1 e 1 0 ]
+[v _Hundredth Hundredth `uc  1 e 1 0 ]
+[v _Tenth Tenth `uc  1 e 1 0 ]
+[v _Unit Unit `uc  1 e 1 0 ]
+"7
+[v _ADSValue ADSValue `uc  1 e 1 0 ]
+"8
+[v _AD AD `[5]ui  1 e 10 0 ]
+"10
 [v _main main `(v  1 e 1 0 ]
 {
-"15
+"25
 } 0
-"43 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
-[v _TM1620_Init TM1620_Init `(v  1 e 1 0 ]
+"14 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
+[v _setup setup `(v  1 e 1 0 ]
 {
-"48
+"26
 } 0
-"50
+"61 D:\PIC12\PIC12F1840-DewSensor.X\main.c
 [v _TM1620_Dis TM1620_Dis `(v  1 e 1 0 ]
 {
-"68
+"85
 } 0
-"33
+"99
 [v _TM1620Sencmd TM1620Sencmd `(v  1 e 1 0 ]
 {
 [v TM1620Sencmd@com com `uc  1 a 1 wreg ]
 [v TM1620Sencmd@com com `uc  1 a 1 wreg ]
-"35
-[v TM1620Sencmd@com com `uc  1 a 1 9 ]
-"41
+"101
+[v TM1620Sencmd@com com `uc  1 a 1 5 ]
+"106
 } 0
-"21
+"87
 [v _TM1620Sendata TM1620Sendata `(v  1 e 1 0 ]
 {
-"23
-[v TM1620Sendata@i i `uc  1 a 1 6 ]
-"21
-[v TM1620Sendata@TM1620Data TM1620Data `i  1 p 2 0 ]
-"31
+[v TM1620Sendata@TM1620Data TM1620Data `uc  1 a 1 wreg ]
+"89
+[v TM1620Sendata@i i `uc  1 a 1 3 ]
+"87
+[v TM1620Sendata@TM1620Data TM1620Data `uc  1 a 1 wreg ]
+"90
+[v TM1620Sendata@TM1620Data TM1620Data `uc  1 a 1 2 ]
+"97
 } 0
-"6
+"4 D:\PIC12\PIC12F1840-DewSensor.X\Dew_Sensor.c
 [v _PIC12F1840_Init PIC12F1840_Init `(v  1 e 1 0 ]
 {
-"19
+"12
+} 0
+"108 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+[v _Numerical_Partitioning Numerical_Partitioning `(v  1 e 1 0 ]
+{
+[v Numerical_Partitioning@ADCValue ADCValue `ui  1 p 2 0 ]
+"114
+} 0
+"5 C:\XC8\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"25
+} 0
+"36 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+[v _ADsensing ADsensing `(v  1 e 1 0 ]
+{
+"48
+} 0
+"27
+[v _getADCValue getADCValue `(ui  1 e 2 0 ]
+{
+[v getADCValue@channel channel `uc  1 a 1 wreg ]
+[v getADCValue@channel channel `uc  1 a 1 wreg ]
+"29
+[v getADCValue@channel channel `uc  1 a 1 9 ]
+"34
+} 0
+"5 C:\XC8\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
+"30
+} 0
+"50 D:\PIC12\PIC12F1840-DewSensor.X\main.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"59
 } 0

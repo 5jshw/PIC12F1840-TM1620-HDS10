@@ -23,7 +23,7 @@
 
 #define _XTAL_FREQ 32000000
 
-void TM1620Sendata(int TM1620Data);
+void TM1620Sendata(char TM1620Data);
 void TM1620Sencmd(char com);
 void TM1620_Dis(void);
 void TM1620_Init(void);
@@ -32,7 +32,7 @@ void setup(void);
 unsigned int getADCValue(unsigned char channel);	// 单次AD转换
 void __interrupt() ISR(void);						// 中断处理函数
 void ADsensing(void);								// AD转换，主程序
-
+void Numerical_Partitioning(unsigned int ADCValue);
 
 #define AddrAutoAdd     0x40	// 写显示，自动累加地址 
 #define Addr00H         0xC0	// 地址00H
@@ -46,9 +46,6 @@ void ADsensing(void);								// AD转换，主程序
 
 #define DIN			LATAbits.LATA2
 #define T_DIN		TRISAbits.TRISA2
-
-#define JLS			LATAbits.LATA4
-#define T_JLS		TRISAbits.TRISA4
 
 #endif	/* DEW_SENSOR_H */
 

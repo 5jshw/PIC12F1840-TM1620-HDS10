@@ -3344,7 +3344,7 @@ extern __bank0 __bit __timeout;
 
 
 
-void TM1620Sendata(int TM1620Data);
+void TM1620Sendata(char TM1620Data);
 void TM1620Sencmd(char com);
 void TM1620_Dis(void);
 void TM1620_Init(void);
@@ -3353,23 +3353,31 @@ void setup(void);
 unsigned int getADCValue(unsigned char channel);
 void __attribute__((picinterrupt(("")))) ISR(void);
 void ADsensing(void);
+void Numerical_Partitioning(unsigned int ADCValue);
 # 2 "main.c" 2
 
 
-const int CODE[10]={0x3F,0x06,0x5b,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-unsigned long currentResistance;
+const unsigned char CODE[10]={0x3F,0x06,0x5b,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+unsigned long currentResistance = 0;
+unsigned int ADValue = 0;
+unsigned char Thousandth = 0, Hundredth = 0, Tenth = 0, Unit = 0;
+char ADSValue = 0;
+unsigned int AD[5];
 
 void main(void)
 {
  PIC12F1840_Init();
- TM1620_Init();
  setup();
-    _delay((unsigned long)((1000)*(32000000/4000.0)));
+
+ _delay((unsigned long)((500)*(32000000/4000.0)));
  while(1)
  {
   ADsensing();
-  _delay((unsigned long)((100)*(32000000/4000.0)));
+  _delay((unsigned long)((20)*(32000000/4000.0)));
+  Numerical_Partitioning(ADValue);
+  _delay((unsigned long)((20)*(32000000/4000.0)));
   TM1620_Dis();
+  _delay((unsigned long)((20)*(32000000/4000.0)));
  }
 }
 
@@ -3384,12 +3392,16 @@ unsigned int getADCValue(unsigned char channel)
 
 void ADsensing(void)
 {
- unsigned long voltageValue;
- unsigned long ADValue = 0;
- ADValue = getADCValue(0x03);
- ADValue = 1024 - ADValue;
- voltageValue = ADValue * 500 / 1024;
- currentResistance = (unsigned long)(500 - voltageValue) * 10000 / voltageValue;
+ if(ADSValue < 5)
+ {
+  AD[ADSValue] = getADCValue(0x03);
+  ADSValue++;
+ }
+ else
+ {
+  ADValue = (AD[0] + AD[1] + AD[2] + AD[3] + AD[4]) / 5;
+  ADSValue = 0;
+ }
 }
 
 void __attribute__((picinterrupt(("")))) ISR(void)
@@ -3399,8 +3411,55 @@ void __attribute__((picinterrupt(("")))) ISR(void)
   PIE1bits.ADIE = 0;
   PIR1bits.ADIF = 0;
 
-
-
   PIE1bits.ADIE = 1;
  }
+}
+
+void TM1620_Dis(void)
+{
+    TM1620Sendata(CODE[Thousandth]);
+    TM1620Sendata(0x00);
+ TM1620Sendata(CODE[Hundredth]);
+    TM1620Sendata(0x00);
+ TM1620Sendata(CODE[Tenth]);
+    TM1620Sendata(0x00);
+ TM1620Sendata(CODE[Unit]);
+    TM1620Sendata(0x00);
+ _delay((unsigned long)((5)*(32000000/4000.0)));
+
+ LATAbits.LATA0 = 1;
+ _delay((unsigned long)((1)*(32000000/4000.0)));
+ LATAbits.LATA0 = 0;
+ _delay((unsigned long)((1)*(32000000/4000.0)));
+ TM1620Sencmd(0x8F);
+ LATAbits.LATA0 = 1;
+}
+
+void TM1620Sendata(char TM1620Data)
+{
+ char i;
+ for(i = 0; i < 8; i++)
+ {
+  LATAbits.LATA1 = 0;
+  LATAbits.LATA2 = 1 & (TM1620Data >> i);
+  LATAbits.LATA1 = 1;
+  _delay((unsigned long)((3)*(32000000/4000000.0)));
+ }
+}
+
+void TM1620Sencmd(char com)
+ {
+ LATAbits.LATA0 = 1;
+ _delay((unsigned long)((1)*(32000000/4000.0)));
+ LATAbits.LATA0 = 0;
+ _delay((unsigned long)((1)*(32000000/4000.0)));
+ TM1620Sendata(com);
+ }
+
+void Numerical_Partitioning(unsigned int ADCValue)
+{
+ Thousandth = ADCValue / 1000;
+ Hundredth = ADCValue % 1000 / 100;
+ Tenth = ADCValue % 100 / 10;
+ Unit = ADCValue % 10;
 }

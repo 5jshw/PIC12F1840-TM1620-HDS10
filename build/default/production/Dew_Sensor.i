@@ -3344,76 +3344,47 @@ extern __bank0 __bit __timeout;
 
 
 
-void TM1620Sendata(int TM1620Data);
+void TM1620Sendata(char TM1620Data);
 void TM1620Sencmd(char com);
 void TM1620_Dis(void);
 void TM1620_Init(void);
 void PIC12F1840_Init(void);
+void setup(void);
+unsigned int getADCValue(unsigned char channel);
+void __attribute__((picinterrupt(("")))) ISR(void);
+void ADsensing(void);
+void Numerical_Partitioning(unsigned int ADCValue);
 # 2 "Dew_Sensor.c" 2
 
-
-extern const int CODE[10]={0x3F,0x06,0x5b,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 
 void PIC12F1840_Init(void)
 {
  LATAbits.LATA0 = 1;
  TRISAbits.TRISA0 = 0;
-
  LATAbits.LATA1 = 1;
  TRISAbits.TRISA1 = 0;
-
  LATAbits.LATA2 = 1;
  TRISAbits.TRISA2 = 0;
-
- LATAbits.LATA4 = 0;
- TRISAbits.TRISA4 = 0;
 }
 
-void TM1620Sendata(int TM1620Data)
+void setup(void)
 {
- char i;
- for(i = 0; i < 8; i++)
- {
-  LATAbits.LATA1 = 0;
-  LATAbits.LATA2 = 1 & (TM1620Data >> i);
-  LATAbits.LATA1 = 1;
-  _delay((unsigned long)((3)*(32000000/4000000.0)));
- }
+ OSCCON = 0b11110000;
+
+ ANSELAbits.ANSA4 = 1;
+ ADCON1 = 0x50;
+ INTCONbits.GIE = 1;
+ INTCONbits.PEIE = 1;
+ PIE1bits.ADIE = 1;
+ PIR1bits.ADIF = 0;
+ ADCON0bits.GO = 0;
+ ADCON0bits.ADON = 1;
 }
-
-void TM1620Sencmd(char com)
- {
- LATAbits.LATA0 = 1;
- _delay((unsigned long)((1)*(32000000/4000.0)));
- LATAbits.LATA0 = 0;
- _delay((unsigned long)((1)*(32000000/4000.0)));
- TM1620Sendata(com);
-
- }
 
 void TM1620_Init(void)
 {
  TM1620Sencmd(0x02);
  TM1620Sencmd(0x40);
     TM1620Sencmd(0xC0);
-}
-
-void TM1620_Dis(void)
-{
-
-    TM1620Sendata(CODE[0]);
-    TM1620Sendata(0x00);
- TM1620Sendata(CODE[1]);
-    TM1620Sendata(0x00);
- TM1620Sendata(CODE[2]);
-    TM1620Sendata(0x00);
- TM1620Sendata(CODE[3]);
-    TM1620Sendata(0x00);
-
- LATAbits.LATA0 = 1;
- _delay((unsigned long)((1)*(32000000/4000.0)));
- LATAbits.LATA0 = 0;
- _delay((unsigned long)((1)*(32000000/4000.0)));
- TM1620Sencmd(0x8F);
- LATAbits.LATA0 = 1;
+ _delay((unsigned long)((5)*(32000000/4000000.0)));
 }
